@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ldjam_58
@@ -21,19 +23,25 @@ namespace ldjam_58
         void Update()
         {
             timer += Time.deltaTime;
-
-            if (timer >= gameState.SpawnInterval)
+            var timeToSpawn = 1 / gameState.SpawnRate;
+            if (timer >= timeToSpawn)
             {
-                SpawnPrefab();
-                timer = 0f;
+                StartCoroutine(Spawn());
+                timer = 0;
             }
         }
-
+        
+        IEnumerator Spawn() 
+        {
+            float delay = Random.Range(0f, 0.3f);
+            yield return new WaitForSeconds(delay);
+            SpawnPrefab();
+        }
+        
         void SpawnPrefab()
         {
             if (prefabs == null || prefabs.Length == 0)
             {
-                Debug.LogWarning("No prefab assigned to PrefabSpawner!");
                 return;
             }
 
