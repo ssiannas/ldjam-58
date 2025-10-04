@@ -17,7 +17,9 @@ namespace ldjam_58
         private LayerMask soulsLayer = 3;
 
         private Camera _mainCamera;
-
+        
+        [SerializeField] private ScoreChannel scoreChannel;
+        
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         private void Awake()
         {
@@ -36,6 +38,11 @@ namespace ldjam_58
             else
             {
                 Debug.Log("Could not find 'Player' action map in Input Action Asset!");
+            }
+            
+            if (scoreChannel is null)
+            {
+                throw new MissingComponentException("ScoreChannel is not assigned in the inspector");
             }
         }
 
@@ -77,6 +84,8 @@ namespace ldjam_58
                 var soulComponent = soul.GetComponent<SoulController>();
                 soulComponent?.OnColelcted();
             }
+            
+            scoreChannel.AddScore((uint)soulsHit.Length);
         }
     }
 }

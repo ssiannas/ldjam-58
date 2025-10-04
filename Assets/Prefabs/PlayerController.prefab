@@ -48,3 +48,4 @@ MonoBehaviour:
   soulsLayer:
     serializedVersion: 2
     m_Bits: 8
+  scoreChannel: {fileID: 11400000, guid: c70221f3575d830429329789de448de0, type: 2}
