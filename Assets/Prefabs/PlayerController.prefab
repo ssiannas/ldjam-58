@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.PlayerController
   playerControls: {fileID: -944628639613478452, guid: 7578237d14af170479bd84aad5b93130, type: 3}
+  _currentWeapon: 0
   soulsLayer:
     serializedVersion: 2
     m_Bits: 8

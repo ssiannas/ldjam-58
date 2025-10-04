@@ -27,6 +27,8 @@ namespace ldjam_58
 
         public void OnColelcted()
         {
+            // Trigger death animation
+            // Trigger sound effect
             Destroy(gameObject);
         }
     }
