@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SoulController : MonoBehaviour
 {
@@ -7,22 +8,34 @@ public class SoulController : MonoBehaviour
     public int soulPoints = 1;     // Points on Collection
     private Vector3 startPosition; //startPosition
 
+    private bool hovering = false;
+
     private void Start()
     {
         startPosition = transform.position;
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            ClickAndDestroy();
-        }
     }
     void Update()
     {
         float newX = transform.position.x + (moveSpeed * Time.deltaTime);
         transform.position = new Vector3(newX, transform.position.y, transform.position.z);
+
+        if (Mouse.current.leftButton.wasPressedThisFrame && hovering)
+        {
+            ClickAndDestroy();
+        }
+
     }
 
-    private void ClickAndDestroy()
+    void ClickAndDestroy()
     {
-
+        Debug.Log("NPC destroyed!");
+        Destroy(gameObject);
+        Debug.Log("NPC destroyed!");
     }
+
+    private void OnMouseOver()
+    {
+         hovering = true;
+    }
+
 }
