@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace ldjam_58
 {
-   [CreateAssetMenu(fileName = "ScoreChannel", menuName = "SO/Channels/ScoreChannel")]
+   [CreateAssetMenu(fileName = "UIChannel", menuName = "SO/Channels/UIChannel")]
    public class UIChannel : ScriptableObject
    {
       public UnityAction<string> OnUpdateScore;

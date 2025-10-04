@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a071e1c0dac1e174a8620b64b2644c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  scoreManager: {fileID: 4782868486450372203}
+  channel: {fileID: 11400000, guid: d916912c1e67d3346971655e98d27672, type: 2}
+  gameState: {fileID: 11400000, guid: 4b9d6de3c950bdd48b059dff7645f006, type: 2}
 --- !u!114 &5608968956318953080
 MonoBehaviour:
   m_ObjectHideFlags: 0
