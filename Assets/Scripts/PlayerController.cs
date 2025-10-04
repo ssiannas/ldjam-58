@@ -3,45 +3,46 @@ using UnityEngine.InputSystem;
 
 namespace ldjam_58
 {
-    
     public class PlayerController : MonoBehaviour
     {
-        [Header("Input Settings")]
-        [SerializeField] private InputActionAsset playerControls;
-        private InputAction clickAction;
-        private InputActionMap playerActionMap;
+        [Header("Input Settings")] [SerializeField]
+        private InputActionAsset playerControls;
 
-        [Header("Souls Layer Settings")]
-        [SerializeField] private LayerMask soulsLayer = 3;
+        private InputAction _clickAction;
+        private InputActionMap _playerActionMap;
 
-        private Camera mainCamera;
+        private PlayerWeapons _currentWeapon = PlayerWeapons.None;
+
+        [Header("Souls Layer Settings")] [SerializeField]
+        private LayerMask soulsLayer = 3;
+
+        private Camera _mainCamera;
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        private void Awake()
         {
-            mainCamera = Camera.main;
-            if (playerControls != null)
+            _mainCamera = Camera.main;
+
+            if (playerControls is null)
             {
-                playerActionMap = playerControls.FindActionMap("Player");
-                if (playerActionMap != null)
-                {
-                    clickAction = playerActionMap.FindAction("Click");
-                }
-                else
-                {
-                    Debug.Log("Could not find 'Player' action map in Input Action Asset!");
-                }
+                return;
+            }
+
+            _playerActionMap = playerControls.FindActionMap("Player");
+            if (_playerActionMap != null)
+            {
+                _clickAction = _playerActionMap.FindAction("Click");
             }
             else
             {
-                Debug.Log("Player Controls Input Action Asset is not assigned!");
+                Debug.Log("Could not find 'Player' action map in Input Action Asset!");
             }
-
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (clickAction.triggered)
+            if (_clickAction.triggered)
             {
                 HandleClick();
             }
@@ -50,30 +51,31 @@ namespace ldjam_58
         private void HandleClick()
         {
             // Convert mouse position to world position for 2D
-            Vector2 mousePosition = Mouse.current.position.ReadValue();
-            Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
+            var mousePosition = Mouse.current.position.ReadValue();
+            var worldPosition = _mainCamera.ScreenToWorldPoint(mousePosition);
             worldPosition.z = 0;
 
-            // Cast a point to check what's at this position in 2D
-            Collider2D hit = Physics2D.OverlapPoint(worldPosition, soulsLayer);
-            Debug.Log($"Click at world position: {worldPosition}");
+            var soulsHit = _currentWeapon switch
+            {
+                PlayerWeapons.None => HandleWeaponNone(worldPosition),
+                _ => null
+            };
+            
+            CollectSouls(soulsHit);
+        }
 
-            if (hit != null)
+        private Collider2D[] HandleWeaponNone(Vector2 worldPos)
+        {
+            var hit = Physics2D.OverlapCircleAll(worldPos, 0.01f, soulsLayer);
+            return hit;
+        }
+
+        private void CollectSouls(Collider2D[] soulsHit)
+        {
+            foreach (var soul in soulsHit)
             {
-                // Check if we hit an NPC
-                SoulController soul = hit.GetComponent<SoulController>();
-                if (soul != null)
-                {
-                    Debug.Log("Soul Clicked!");
-                }
-                else
-                {
-                    Debug.Log($"Hit {hit.name} but it doesn't have NPCController component");
-                }
-            }
-            else
-            {
-                Debug.Log("Click didn't hit any NPC");
+                var soulComponent = soul.GetComponent<SoulController>();
+                soulComponent?.OnColelcted();
             }
         }
     }

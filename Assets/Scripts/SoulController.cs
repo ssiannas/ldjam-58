@@ -20,5 +20,10 @@ namespace ldjam_58
             float newX = transform.position.x + (moveSpeed * Time.deltaTime);
             transform.position = new Vector3(newX, transform.position.y, transform.position.z);
         }
+
+        public void OnColelcted()
+        {
+            // ouch
+        }
     }
 }
