@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace ldjam_58
@@ -11,7 +12,7 @@ namespace ldjam_58
         private InputAction _clickAction;
         private InputActionMap _playerActionMap;
 
-        private PlayerWeapons _currentWeapon = PlayerWeapons.Scythe;
+        [SerializeField] private PlayerWeapons _currentWeapon = PlayerWeapons.None;
 
         [Header("Souls Layer Settings")] [SerializeField]
         private LayerMask soulsLayer = 3;
@@ -37,6 +38,8 @@ namespace ldjam_58
                 throw new MissingComponentException("GameManagerChannel is not assigned in the inspector");
             }
 
+            gameManagerChannel.OnChangePlayerWeaponRequested += SetWeapon;
+            
             _playerActionMap = playerControls.FindActionMap("Player");
             if (_playerActionMap != null)
             {
@@ -100,16 +103,20 @@ namespace ldjam_58
                 PlayerWeapons.None => HandleWeaponNone(worldPosition),
                 PlayerWeapons.Net => HandleWeaponNet(worldPosition),
                 PlayerWeapons.Scythe => HandleWeaponScythe(worldPosition),
-                _ => null
+                PlayerWeapons.Unalivatron => Array.Empty<Collider2D>(),
             };
             
             CollectSouls(soulsHit);
         }
+        
+        public void SetWeapon(PlayerWeapons newWeapon)
+        {
+            _currentWeapon = newWeapon;
+        }
 
         private Collider2D[] HandleWeaponNone(Vector2 worldPos)
         {
-            var hit = Physics2D.OverlapCircleAll(worldPos, 0.01f, soulsLayer);
-            return hit;
+            return Physics2D.OverlapCircleAll(worldPos, 0.01f, soulsLayer);
         }
 
         private Collider2D[] HandleWeaponNet(Vector2 worldPos)

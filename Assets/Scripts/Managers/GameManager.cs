@@ -25,7 +25,8 @@ namespace ldjam_58
                 throw new MissingComponentException("GameManagerChannel is not assigned in the inspector");
             }
             channel.OnAddScoreRequested += _scoreController.AddSouls;
-
+            channel.OnRemoveScoreRequested += _scoreController.RemoveSouls;
+                
             DontDestroyOnLoad(this);
             gameState.Reset();
         }

@@ -10,6 +10,8 @@ namespace ldjam_58
       public UnityAction OnGameOverRequested;
       public UnityAction OnGameRestartRequested;
       public UnityAction<uint> OnAddScoreRequested;
+      public UnityAction<uint> OnRemoveScoreRequested;
+      public UnityAction<PlayerWeapons> OnChangePlayerWeaponRequested;
 
       public void StartGame()
       {
@@ -29,6 +31,16 @@ namespace ldjam_58
       public void AddScore(uint score)
       {
          OnAddScoreRequested?.Invoke(score);
+      }
+      
+      public void RemoveScore(uint score)
+      {
+         OnRemoveScoreRequested?.Invoke(score);
+      }
+      
+      public void ChangePlayerWeapon(PlayerWeapons newWeapon)
+      {
+         OnChangePlayerWeaponRequested?.Invoke(newWeapon);  
       }
    }
 }
