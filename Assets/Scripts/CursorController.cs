@@ -1,20 +1,22 @@
 using UnityEngine;
 
-public class CursorController : MonoBehaviour
+namespace ldjam_58
 {
-    [Header("Cursor Settings")]
-    public Texture2D cursorTexture;
-    public Vector2 hotspot = Vector2.zero;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class CursorController : MonoBehaviour
     {
-        Cursor.SetCursor(cursorTexture, hotspot, CursorMode.Auto);
-    }
+        [Header("Cursor Settings")] public Texture2D cursorTexture;
+        public Vector2 hotspot = Vector2.zero;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Start()
+        {
+            Cursor.SetCursor(cursorTexture, hotspot, CursorMode.Auto);
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }

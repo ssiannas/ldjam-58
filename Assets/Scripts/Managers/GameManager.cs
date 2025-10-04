@@ -2,22 +2,27 @@ using System;
 using TMPro;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace ldjam_58
 {
-    private ScoreController _scoreController;
-    private void Awake()
+    public class GameManager : MonoBehaviour
     {
-        _scoreController = GetComponent<ScoreController>(); 
-        if (_scoreController is null)
-        {
-            Debug.LogError("ScoreManager component is missing from GameManager GameObject", this);
-            return;
-        }
-        DontDestroyOnLoad(this);
-    }
+        private ScoreController _scoreController;
 
-    // Update is called once per frame
-    void Update()
-    {
+        private void Awake()
+        {
+            _scoreController = GetComponent<ScoreController>();
+            if (_scoreController is null)
+            {
+                Debug.LogError("ScoreManager component is missing from GameManager GameObject", this);
+                return;
+            }
+
+            DontDestroyOnLoad(this);
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+        }
     }
 }

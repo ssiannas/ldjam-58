@@ -1,22 +1,20 @@
 using UnityEngine;
 
-public class ScoreController : MonoBehaviour
+namespace ldjam_58
 {
-    [SerializeField] private UIChannel uiChannel;
-    private uint _souls;
-
-    private void Awake()
+    public class ScoreController : MonoBehaviour
     {
-        if (uiChannel is null)
+        [SerializeField] private UIChannel uiChannel;
+        private uint _souls;
+
+        private void Awake()
         {
-            Debug.LogError("ScoreChannel is not assigned in the inspector", this);
-            return;
         }
-    }
 
-    public void AddSouls(uint numSouls)
-    {
-        _souls += numSouls;
-        uiChannel.UpdateScore(_souls.ToString());
+        public void AddSouls(uint numSouls)
+        {
+            _souls += numSouls;
+            uiChannel.UpdateScore(_souls.ToString());
+        }
     }
 }
