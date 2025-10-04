@@ -291,10 +291,10 @@ RectTransform:
   - {fileID: 5038940716070828144}
   m_Father: {fileID: 3600740545943676223}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0044861, y: 502.78183}
-  m_SizeDelta: {x: 2228.8, y: 75.105}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 690.6401}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5746401309678705041
 MonoBehaviour:
@@ -336,6 +336,7 @@ GameObject:
   - component: {fileID: 2277892925067527949}
   - component: {fileID: 4287593305381417872}
   - component: {fileID: 3260810245889348671}
+  - component: {fileID: 3368941468533227477}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -457,6 +458,32 @@ MonoBehaviour:
   popupPanel: {fileID: 8135295444284026857}
   openButton: {fileID: 8736408216118180655}
   closeButton: {fileID: 2060000399768226077}
+--- !u!114 &3368941468533227477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3782093965165411860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: -274
+    m_Bottom: 0
+  m_ChildAlignment: 1
+  m_Spacing: -143.91
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &4704615468862350655
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,9 +926,9 @@ RectTransform:
   m_Father: {fileID: 3600740545943676223}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 3.6070557}
-  m_SizeDelta: {x: -610.571, y: -544.641}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1513.1953, y: 600.6401}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7594834859560547506
 CanvasRenderer:
