@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13bdbd7232402744a0a181a480012ab, type: 3}
   m_Name: GameState
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.GameState
-  SpawnInterval: 2
-  CurrentSouls: 1
-  defaultSpawnInterval: 2
+  SpawnInterval: 0.5
+  CurrentSouls: 26
+  defaultSpawnInterval: -0.9
   defaultCurrentSouls: 1

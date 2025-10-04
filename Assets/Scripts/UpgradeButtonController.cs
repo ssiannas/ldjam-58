@@ -62,6 +62,7 @@ namespace ldjam_58
             upgradeData.ApplyUpgrade();
             gameManagerChannel.RemoveScore(upgradeData.UpgradeCost);
             gameState.CurrentUpgradeTier[upgradeData.Type] += 1;
+            _upgradeButton.interactable = false;
         }
     }
 }
