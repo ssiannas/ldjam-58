@@ -12,11 +12,10 @@ namespace ldjam_58
         private InputAction _clickAction;
         private InputActionMap _playerActionMap;
 
-<<<<<<< HEAD
-        private PlayerWeapons _currentWeapon = PlayerWeapons.Unalivatron;
-=======
-        [SerializeField] private PlayerWeapons _currentWeapon = PlayerWeapons.None;
->>>>>>> 4beff974c3bc22c35e4663ec1237de95bdbdab98
+
+
+        [SerializeField] private PlayerWeapons _currentWeapon = PlayerWeapons.Unalivatron;
+
 
         [Header("Souls Layer Settings")] [SerializeField]
         private LayerMask soulsLayer = 3;
@@ -107,7 +106,7 @@ namespace ldjam_58
                 PlayerWeapons.None => HandleWeaponNone(worldPosition),
                 PlayerWeapons.Net => HandleWeaponNet(worldPosition),
                 PlayerWeapons.Scythe => HandleWeaponScythe(worldPosition),
-                PlayerWeapons.Unalivatron => Array.Empty<Collider2D>(),
+                PlayerWeapons.Unalivatron => HandleWeaponUnalivatron(worldPosition),
             };
             
             CollectSouls(soulsHit);
@@ -143,6 +142,10 @@ namespace ldjam_58
             return hit;
         }
 
+        private Collider2D[] HandleWeaponUnalivatron(Vector2 worldPos)
+        {
+            return Physics2D.OverlapCircleAll(worldPos, 0.1f, soulsLayer);
+        }
 
         private void CollectSouls(Collider2D[] soulsHit)
         {
