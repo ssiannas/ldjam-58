@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace ldjam_58
@@ -11,13 +11,15 @@ namespace ldjam_58
         private InputAction _clickAction;
         private InputActionMap _playerActionMap;
 
-        private PlayerWeapons _currentWeapon = PlayerWeapons.None;
+        private PlayerWeapons _currentWeapon = PlayerWeapons.Scythe;
 
         [Header("Souls Layer Settings")] [SerializeField]
         private LayerMask soulsLayer = 3;
 
         private Camera _mainCamera;
-        
+
+        private bool _holding = false;
+
         [SerializeField] private GameManagerChannel gameManagerChannel;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -49,11 +51,42 @@ namespace ldjam_58
         // Update is called once per frame
         void Update()
         {
-            if (_clickAction.triggered)
+            if(_currentWeapon is PlayerWeapons.Unalivatron && _holding)
             {
                 HandleClick();
             }
         }
+
+
+        private void OnEnable()
+        {
+            _clickAction.Enable();
+            _clickAction.performed += OnClickPerformed;
+            _clickAction.canceled += OnClickReleased;
+        }
+
+        private void OnDisable()
+        {
+            _clickAction.performed -= OnClickPerformed;
+            _clickAction.canceled -= OnClickReleased;
+            _clickAction.Disable();
+        }
+
+        private void OnClickPerformed(InputAction.CallbackContext ctx)
+        {
+         
+            if (_currentWeapon is not PlayerWeapons.Unalivatron) { HandleClick();};
+            _holding = true;
+
+
+        }
+
+        private void OnClickReleased(InputAction.CallbackContext ctx)
+        {
+
+            _holding = false;
+        }
+
 
         private void HandleClick()
         {
@@ -65,6 +98,8 @@ namespace ldjam_58
             var soulsHit = _currentWeapon switch
             {
                 PlayerWeapons.None => HandleWeaponNone(worldPosition),
+                PlayerWeapons.Net => HandleWeaponNet(worldPosition),
+                PlayerWeapons.Scythe => HandleWeaponScythe(worldPosition),
                 _ => null
             };
             
@@ -76,6 +111,27 @@ namespace ldjam_58
             var hit = Physics2D.OverlapCircleAll(worldPos, 0.01f, soulsLayer);
             return hit;
         }
+
+        private Collider2D[] HandleWeaponNet(Vector2 worldPos)
+        {
+            Vector2 xOffset = new Vector2(1.5f, 0.0f);
+            Vector2 leftPonit = worldPos - xOffset;
+            Vector2 rightPonit = worldPos + xOffset;
+            float distance = Vector2.Distance(leftPonit, rightPonit);
+            float angle = Mathf.Atan2(rightPonit.y - leftPonit.y, rightPonit.x - leftPonit.x) * Mathf.Rad2Deg;
+
+            // Very small thickness → almost like a line
+            Collider2D[] hit = Physics2D.OverlapCapsuleAll(worldPos, new Vector2(distance, 0.01f), CapsuleDirection2D.Horizontal, angle);
+
+            return hit;
+        }
+
+        private Collider2D[] HandleWeaponScythe(Vector2 worldPos)
+        {
+            var hit = Physics2D.OverlapCircleAll(worldPos, 3.0f, soulsLayer);
+            return hit;
+        }
+
 
         private void CollectSouls(Collider2D[] soulsHit)
         {

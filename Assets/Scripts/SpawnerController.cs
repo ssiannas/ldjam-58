@@ -7,7 +7,6 @@ namespace ldjam_58
         [SerializeField] private GameState gameState;
         [Header("Prefabs to Spawn")] public GameObject[] prefabs;
         [Header("Spawn Settings")] public Transform spawnPoint;
-
         private float timer;
 
         void Awake()
