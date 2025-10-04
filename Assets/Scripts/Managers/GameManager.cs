@@ -1,21 +1,23 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private ScoreManager _scoreManager;
     private void Awake()
     {
+        _scoreManager = GetComponent<ScoreManager>(); 
+        if (_scoreManager is null)
+        {
+            Debug.LogError("ScoreManager component is missing from GameManager GameObject", this);
+            return;
+        }
         DontDestroyOnLoad(this);
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

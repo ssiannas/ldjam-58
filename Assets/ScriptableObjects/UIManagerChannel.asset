@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe80a190f5d9b3e4bab0575a7bebbe82, type: 3}
-  m_Name: ScoreChannel
+  m_Name: UIManagerChannel
   m_EditorClassIdentifier: Assembly-CSharp::ScoreChannel
