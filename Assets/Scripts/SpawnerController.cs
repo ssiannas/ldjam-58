@@ -1,41 +1,50 @@
 using UnityEngine;
 
-public class SpawnerController : MonoBehaviour
+namespace ldjam_58
 {
-    [Header("Prefabs to Spawn")]
-    public GameObject[] prefabs;
-
-    [Header("Spawn Settings")]
-    public Transform spawnPoint;  
-    public float spawnInterval = 2f; 
-
-    private float timer;
-
-    void Update()
+    public class SpawnerController : MonoBehaviour
     {
-        timer += Time.deltaTime;
+        [SerializeField] private GameState gameState;
+        [Header("Prefabs to Spawn")] public GameObject[] prefabs;
+        [Header("Spawn Settings")] public Transform spawnPoint;
 
-        if (timer >= spawnInterval)
+        private float timer;
+
+        void Awake()
         {
-            SpawnPrefab();
-            timer = 0f;
+            if (gameState is null)
+            {
+                Debug.LogError("GameState ScriptableObject is not assigned in PrefabSpawner!", this);
+                return;
+            }
         }
-    }
-
-    void SpawnPrefab()
-    {
-        if (prefabs == null || prefabs.Length == 0)
-        {
-            Debug.LogWarning("No prefab assigned to PrefabSpawner!");
-            return;
-        }
-
-        Vector3 position = spawnPoint ? spawnPoint.position : transform.position;
-        Quaternion rotation = spawnPoint ? spawnPoint.rotation : Quaternion.identity;
         
-        int index = Random.Range(0, prefabs.Length);
-        GameObject prefabToSpawn = prefabs[index];
+        void Update()
+        {
+            timer += Time.deltaTime;
 
-        Instantiate(prefabToSpawn, position, rotation);
+            if (timer >= gameState.SpawnInterval)
+            {
+                SpawnPrefab();
+                timer = 0f;
+            }
+        }
+
+        void SpawnPrefab()
+        {
+            if (prefabs == null || prefabs.Length == 0)
+            {
+                Debug.LogWarning("No prefab assigned to PrefabSpawner!");
+                return;
+            }
+
+            Vector3 position = spawnPoint ? spawnPoint.position : transform.position;
+            Quaternion rotation = spawnPoint ? spawnPoint.rotation : Quaternion.identity;
+
+            int index = Random.Range(0, prefabs.Length);
+            GameObject prefabToSpawn = prefabs[index];
+
+            Instantiate(prefabToSpawn, position, rotation);
+        }
     }
 }
