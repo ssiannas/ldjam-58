@@ -4,18 +4,26 @@ namespace ldjam_58
 {
     public class SpawnerController : MonoBehaviour
     {
+        [SerializeField] private GameState gameState;
         [Header("Prefabs to Spawn")] public GameObject[] prefabs;
-
         [Header("Spawn Settings")] public Transform spawnPoint;
-        public float spawnInterval = 2f;
 
         private float timer;
 
+        void Awake()
+        {
+            if (gameState is null)
+            {
+                Debug.LogError("GameState ScriptableObject is not assigned in PrefabSpawner!", this);
+                return;
+            }
+        }
+        
         void Update()
         {
             timer += Time.deltaTime;
 
-            if (timer >= spawnInterval)
+            if (timer >= gameState.SpawnInterval)
             {
                 SpawnPrefab();
                 timer = 0f;
