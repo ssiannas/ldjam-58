@@ -23,7 +23,7 @@ namespace ldjam_58
 
         public void OnColelcted()
         {
-            // ouch
+            Destroy(gameObject);
         }
     }
 }
