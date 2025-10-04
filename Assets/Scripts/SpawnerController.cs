@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class PrefabSpawner : MonoBehaviour
+public class SpawnerController : MonoBehaviour
 {
     [Header("Prefabs to Spawn")]
     public GameObject[] prefabs;
 
     [Header("Spawn Settings")]
-    public Transform spawnPoint;  // Optional: where to spawn
-    public float spawnInterval = 2f;  // How often to spawn
+    public Transform spawnPoint;  
+    public float spawnInterval = 2f; 
 
     private float timer;
 

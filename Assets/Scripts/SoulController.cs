@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SoulBehaviour : MonoBehaviour
+public class SoulController : MonoBehaviour
 {
     [Header("Soul Settings")]
     public float moveSpeed = 5f;   // Horizontal speed
