@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private ScoreManager _scoreManager;
+    private ScoreController _scoreController;
     private void Awake()
     {
-        _scoreManager = GetComponent<ScoreManager>(); 
-        if (_scoreManager is null)
+        _scoreController = GetComponent<ScoreController>(); 
+        if (_scoreController is null)
         {
             Debug.LogError("ScoreManager component is missing from GameManager GameObject", this);
             return;

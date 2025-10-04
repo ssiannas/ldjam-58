@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ScoreManager : MonoBehaviour
+public class ScoreController : MonoBehaviour
 {
     [SerializeField]
     private UIChannel uiChannel;
