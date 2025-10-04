@@ -6,7 +6,7 @@ public class SoulController : MonoBehaviour
     public float moveSpeed = 5f;   // Horizontal speed
     public int soulPoints = 1;     // Points on Collection
     private Vector3 startPosition; //startPosition
-
+    
     private void Start()
     {
         startPosition = transform.position;

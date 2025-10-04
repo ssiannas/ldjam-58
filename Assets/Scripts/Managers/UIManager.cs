@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class UIController : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
 
     private float _timer;

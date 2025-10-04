@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class ScoreController : MonoBehaviour
 {
-    [SerializeField]
-    private UIChannel uiChannel;
+    [SerializeField] private UIChannel uiChannel;
     private uint _souls;
-    
+
     private void Awake()
     {
         if (uiChannel is null)
