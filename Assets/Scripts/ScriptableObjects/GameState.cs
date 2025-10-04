@@ -8,3 +8,4 @@ namespace ldjam_58
          public float SpawnInterval = 2.0f;
     }
 }
+ 
