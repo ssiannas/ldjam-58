@@ -5,25 +5,25 @@ namespace ldjam_58
     public class ScoreController : MonoBehaviour
     {
         [SerializeField] private UIChannel uiChannel;
-        [SerializeField] private ScoreChannel scoreChannel;
         private uint _souls;
 
-        private void Awake()
+        private void Start()
         {
-            if (scoreChannel is null)
-            {
-                throw new MissingComponentException("ScoreChannel is not assigned in the inspector");
-            }
-
-            scoreChannel.OnScoreAdded += AddSouls;
-            
             if (uiChannel is null)
             {
                 throw new MissingComponentException("UIChannel is not assigned in the inspector");
             }
-        }
 
-        private void AddSouls(uint numSouls)
+            SetSouls(1); // Start at 1 soul
+        }
+    
+        private void SetSouls(uint numSouls)
+        {
+            _souls = numSouls;
+            uiChannel.UpdateScore(_souls.ToString());
+        }
+        
+        public void AddSouls(uint numSouls)
         {
             _souls += numSouls;
             uiChannel.UpdateScore(_souls.ToString());

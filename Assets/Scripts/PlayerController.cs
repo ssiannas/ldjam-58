@@ -7,7 +7,7 @@ namespace ldjam_58
     {
         [Header("Input Settings")] [SerializeField]
         private InputActionAsset playerControls;
-
+        
         private InputAction _clickAction;
         private InputActionMap _playerActionMap;
 
@@ -18,7 +18,7 @@ namespace ldjam_58
 
         private Camera _mainCamera;
         
-        [SerializeField] private ScoreChannel scoreChannel;
+        [SerializeField] private GameManagerChannel gameManagerChannel;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         private void Awake()
@@ -27,7 +27,12 @@ namespace ldjam_58
 
             if (playerControls is null)
             {
-                return;
+                throw new MissingComponentException("Input Action Asset is not assigned in the inspector");
+            }
+            
+            if (gameManagerChannel is null)
+            {
+                throw new MissingComponentException("GameManagerChannel is not assigned in the inspector");
             }
 
             _playerActionMap = playerControls.FindActionMap("Player");
@@ -38,11 +43,6 @@ namespace ldjam_58
             else
             {
                 Debug.Log("Could not find 'Player' action map in Input Action Asset!");
-            }
-            
-            if (scoreChannel is null)
-            {
-                throw new MissingComponentException("ScoreChannel is not assigned in the inspector");
             }
         }
 
@@ -84,8 +84,7 @@ namespace ldjam_58
                 var soulComponent = soul.GetComponent<SoulController>();
                 soulComponent?.OnColelcted();
             }
-            
-            scoreChannel.AddScore((uint)soulsHit.Length);
+            gameManagerChannel.AddScore((uint)soulsHit.Length);
         }
     }
 }

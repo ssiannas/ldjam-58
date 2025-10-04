@@ -48,4 +48,4 @@ MonoBehaviour:
   soulsLayer:
     serializedVersion: 2
     m_Bits: 8
-  scoreChannel: {fileID: 11400000, guid: c70221f3575d830429329789de448de0, type: 2}
+  gameManagerChannel: {fileID: 11400000, guid: d916912c1e67d3346971655e98d27672, type: 2}

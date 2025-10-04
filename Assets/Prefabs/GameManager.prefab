@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a071e1c0dac1e174a8620b64b2644c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  channel: {fileID: 11400000, guid: d916912c1e67d3346971655e98d27672, type: 2}
+  gameState: {fileID: 11400000, guid: 4b9d6de3c950bdd48b059dff7645f006, type: 2}
 --- !u!114 &5608968956318953080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,4 +75,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
   uiChannel: {fileID: 11400000, guid: 37e555768fb56f34bb3a7d1277b9a7db, type: 2}
-  scoreChannel: {fileID: 11400000, guid: c70221f3575d830429329789de448de0, type: 2}
