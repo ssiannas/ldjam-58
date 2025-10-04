@@ -176,6 +176,7 @@ MonoBehaviour:
   upgradeData: {fileID: 0}
   gameState: {fileID: 11400000, guid: 4b9d6de3c950bdd48b059dff7645f006, type: 2}
   gameManagerChannel: {fileID: 11400000, guid: d916912c1e67d3346971655e98d27672, type: 2}
+  uiChannel: {fileID: 11400000, guid: 37e555768fb56f34bb3a7d1277b9a7db, type: 2}
 --- !u!1 &9050850478230716281
 GameObject:
   m_ObjectHideFlags: 0
