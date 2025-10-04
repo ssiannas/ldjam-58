@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CursorController : MonoBehaviour
 {
+    [Header("Cursor Settings")]
     public Texture2D cursorTexture;
     public Vector2 hotspot = Vector2.zero;
     
