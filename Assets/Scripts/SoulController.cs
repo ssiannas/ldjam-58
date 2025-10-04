@@ -1,27 +1,27 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class SoulController : MonoBehaviour
+namespace ldjam_58
 {
-    [Header("Soul Settings")]
-    public float moveSpeed = 5f;   // Horizontal speed
-    public int soulPoints = 1;     // Points on Collection
-    private Vector3 startPosition; //startPosition
-
-    private bool hovering = false;
-
-    private void Start()
+    public class SoulController : MonoBehaviour
     {
-        startPosition = transform.position;
-    }
-    void Update()
-    {
-        float newX = transform.position.x + (moveSpeed * Time.deltaTime);
-        transform.position = new Vector3(newX, transform.position.y, transform.position.z);
+        [Header("Soul Settings")] public float moveSpeed = 5f; // Horizontal speed
+        public int soulPoints = 1; // Points on Collection
+        private Vector3 startPosition; //startPosition
 
-        if (Mouse.current.leftButton.wasPressedThisFrame && hovering)
+        private void Start()
         {
-            ClickAndDestroy();
+            startPosition = transform.position;
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                ClickAndDestroy();
+            }
+        }
+
+        void Update()
+        {
+            float newX = transform.position.x + (moveSpeed * Time.deltaTime);
+            transform.position = new Vector3(newX, transform.position.y, transform.position.z);
         }
 
     }
@@ -32,10 +32,9 @@ public class SoulController : MonoBehaviour
         Destroy(gameObject);
         Debug.Log("NPC destroyed!");
     }
+        private void ClickAndDestroy()
+        {
 
-    private void OnMouseOver()
-    {
-         hovering = true;
+        }
     }
-
 }
