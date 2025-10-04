@@ -11,7 +11,7 @@ namespace ldjam_58
         private InputAction _clickAction;
         private InputActionMap _playerActionMap;
 
-        private PlayerWeapons _currentWeapon = PlayerWeapons.Scythe;
+        private PlayerWeapons _currentWeapon = PlayerWeapons.Unalivatron;
 
         [Header("Souls Layer Settings")] [SerializeField]
         private LayerMask soulsLayer = 3;
