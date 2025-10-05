@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SpawnRate4
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.SpawnRateUpgrade
   upgradeName: SR4
-  flavorText: 
+  upgradeDescription: MOAR SOULS
+  flavorText: "It\u2019s raining souls. Hallelujah"
   upgradeCost: 100000
   upgradeTier: 4
   upgradeType: 1

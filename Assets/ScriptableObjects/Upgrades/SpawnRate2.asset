@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SpawnRate2
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.SpawnRateUpgrade
   upgradeName: SR2
-  flavorText: 
+  upgradeDescription: Souls appear even more often
+  flavorText: Now with 30% less waiting around awkwardl
   upgradeCost: 500
   upgradeTier: 2
   upgradeType: 1

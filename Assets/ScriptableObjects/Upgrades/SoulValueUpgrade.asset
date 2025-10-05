@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: SoulValueUpgrade
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.SoulValueUpgrade
   upgradeName: SoulValue
-  flavorText: 
-  upgradeCost: 240
-  upgradeTier: 2
+  upgradeDescription: Increase number of soul per Collection
+  flavorText: "Souls have been upgraded to \u2018moderately priceless\u2019"
+  upgradeCost: 1000
+  upgradeTier: 1
   upgradeType: 6
   gmChannel: {fileID: 11400000, guid: d916912c1e67d3346971655e98d27672, type: 2}
   _baseCost: 1000

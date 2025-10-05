@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SpawnRate3
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.SpawnRateUpgrade
   upgradeName: SR3
-  flavorText: 
+  upgradeDescription: Souls turn up extremelly fast
+  flavorText: Like pigeons at a bread convention
   upgradeCost: 2000
   upgradeTier: 3
   upgradeType: 1

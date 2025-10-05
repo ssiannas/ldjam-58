@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MinionUpgrade
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.MinionUpgrade
   upgradeName: Nigel Jr.
+  upgradeDescription: Summon ally that periodically Collects
   flavorText: Involuntary Intern (he's my kid)
   upgradeCost: 15
   upgradeTier: 1

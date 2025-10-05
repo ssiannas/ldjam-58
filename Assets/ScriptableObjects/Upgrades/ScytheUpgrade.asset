@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ScytheUpgrade
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.WeaponUpgrade
   upgradeName: Scythe
-  upgradeDescription: 
-  flavorText: asd
+  upgradeDescription: Collect souls from a huge area!
+  flavorText: Now you look like a real pro!
   upgradeCost: 12
   upgradeTier: 3
   upgradeType: 2

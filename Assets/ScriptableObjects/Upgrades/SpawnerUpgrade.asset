@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bb3120c70990b14181dcc81a565951c, type: 3}
   m_Name: SpawnerUpgrade
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.SpawnerUpgrade
-  upgradeName: Spawners
-  flavorText: 
-  upgradeCost: 2750
-  upgradeTier: 2
+  upgradeName: Branch Office Expansion
+  upgradeDescription: Adds a new spawn point for flying client arrivals
+  flavorText: Lighter than air, heavier than paperwork.
+  upgradeCost: 500
+  upgradeTier: 1
   upgradeType: 5
   gmChannel: {fileID: 11400000, guid: d916912c1e67d3346971655e98d27672, type: 2}
   _baseCost: 500

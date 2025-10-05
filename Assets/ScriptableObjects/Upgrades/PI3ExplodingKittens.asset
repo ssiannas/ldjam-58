@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: PI3ExplodingKittens
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.PassiveUpgrade
   upgradeName: Exploding Kittens
-  flavorText: '"Pet with Extreme Care"'
+  upgradeDescription: Collects a moderate amount of souls over time
+  flavorText: '"WARNING DO NOT PET"'
   upgradeCost: 50
   upgradeTier: 3
   upgradeType: 4
