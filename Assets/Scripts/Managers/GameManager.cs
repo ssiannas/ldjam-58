@@ -11,7 +11,8 @@ namespace ldjam_58
         [SerializeField] private GameManagerChannel channel;
         [SerializeField] private GameState gameState;
         [SerializeField] private float currentPassModifier = 0f;
-        [SerializeField] private MinionController[] minions;        
+        [SerializeField] private MinionController[] minions;
+        [SerializeField] private SpawnerController[] spawners;
 
         private void Awake()
         {
@@ -32,12 +33,12 @@ namespace ldjam_58
             channel.OnChangePassiveIncomeRequested += SetPassiveIncome;
             channel.OnSpawnMinionRequested += SpawnMinions;
 
+
             channel.OnSpawnerUpgradeRequested += UpgradeSpawner;
             channel.OnUpgradeSoulValueRequested += UpgradeSoulValue;
             channel.ResetUpgrades();
             gameState.Reset();
             
-
             DontDestroyOnLoad(this);
 
         }
@@ -49,6 +50,14 @@ namespace ldjam_58
                 minion.EnableMinion();
             }
         }
+
+
+        private void UpgradeSpawner(uint newTier)
+        {
+            if (newTier >= spawners.Length) { return; }
+            spawners[newTier].ActivateSpawner();
+        }
+
 
         // Update is called once per frame
         void Update()
@@ -78,11 +87,12 @@ namespace ldjam_58
             //resume all animators
         }
 
+       
 
-        
         private void UpgradeSoulValue(uint newSoulValue)
         {
             gameState.CurrentSoulValue = newSoulValue;
         }
+
     }
 }
