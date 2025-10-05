@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4123328500549365980}
   - component: {fileID: 8661870434524839149}
+  - component: {fileID: 7463303891940554070}
+  - component: {fileID: 8250126129943368309}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -46,7 +48,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.PlayerController
   playerControls: {fileID: -944628639613478452, guid: 7578237d14af170479bd84aad5b93130, type: 3}
   _currentWeapon: 0
+  _cursorController: {fileID: 0}
   soulsLayer:
     serializedVersion: 2
     m_Bits: 8
   gameManagerChannel: {fileID: 11400000, guid: d916912c1e67d3346971655e98d27672, type: 2}
+--- !u!143 &7463303891940554070
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569443726066710575}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8250126129943368309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569443726066710575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe2f0d6cd4390646972b32c1e0e4d5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.CursorController
+  skellyHandDefault: {fileID: 2800000, guid: 56bc03585abc2844286fd7d3d51637e3, type: 3}
+  skellyHandClicked: {fileID: 2800000, guid: 86bd4d4b0df45594b84164526b6b58b2, type: 3}
+  netHandDefault: {fileID: 2800000, guid: 4f8a111aec781ca4d836a06874fd835e, type: 3}
+  netHandClicked: {fileID: 2800000, guid: 06ad1ba93feb27e4886418c432d2d259, type: 3}
+  scytheHandDefault: {fileID: 2800000, guid: 56bc03585abc2844286fd7d3d51637e3, type: 3}
+  scytheHandClicked: {fileID: 2800000, guid: 86bd4d4b0df45594b84164526b6b58b2, type: 3}
+  unalivatronHandDefault: {fileID: 2800000, guid: 56bc03585abc2844286fd7d3d51637e3, type: 3}
+  unalivatronHandClicked: {fileID: 2800000, guid: 86bd4d4b0df45594b84164526b6b58b2, type: 3}
+  hotspot: {x: 0, y: 0}

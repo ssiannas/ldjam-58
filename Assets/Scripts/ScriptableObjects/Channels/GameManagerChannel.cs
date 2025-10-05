@@ -14,7 +14,9 @@ namespace ldjam_58
       public UnityAction<PlayerWeapons> OnChangePlayerWeaponRequested;
       public UnityAction<uint> OnChangePassiveIncomeRequested;
       public UnityAction OnSpawnMinionRequested;
-
+      public UnityAction<uint> OnSpawnerUpgradeRequested;
+      public UnityAction OnUpgradeResetRequested;
+      
       public void StartGame()
       {
          OnGameStartRequested?.Invoke();
@@ -53,6 +55,16 @@ namespace ldjam_58
       public void SpawnMinion()
       {
          OnSpawnMinionRequested?.Invoke();
+      }
+      
+      public void UpgradeSpawner(uint newTier)
+      {
+         OnSpawnerUpgradeRequested?.Invoke(newTier);
+      }
+
+      public void ResetUpgrades()
+      {
+         OnUpgradeResetRequested?.Invoke();
       }
     }
 }

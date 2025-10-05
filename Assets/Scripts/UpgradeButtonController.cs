@@ -20,8 +20,7 @@ namespace ldjam_58
         {
             _upgradeButton = GetComponent<Button>();
             _upgradeButton.interactable = false;
-            var btnText = GetComponentInChildren<TextMeshProUGUI>();
-            btnText.text = $"{upgradeData.Name}\nCost: {upgradeData.UpgradeCost}\n";
+            MaybeUpdateBtnText();
             if (upgradeData is null)
             {
                 throw new MissingComponentException("Upgrade data is not assigned in the inspector");
@@ -64,12 +63,19 @@ namespace ldjam_58
             _upgradeButton.interactable = true;
             uiChannel.NotifyUpgradeAvailable();
         }
+        
+        private void MaybeUpdateBtnText()
+        {
+            var btnText = GetComponentInChildren<TextMeshProUGUI>();
+            btnText.text = $"{upgradeData.Name}\nCost: {upgradeData.UpgradeCost}\n";
+        }
 
         public void OnPurchase()
         {
             upgradeData.ApplyUpgrade();
             gameManagerChannel.RemoveScore(upgradeData.UpgradeCost);
             gameState.CurrentUpgradeTier[upgradeData.Type] += 1;
+            MaybeUpdateBtnText();
             _upgradeButton.interactable = false;
         }
     }
