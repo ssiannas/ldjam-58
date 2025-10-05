@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace ldjam_58
 {
+    [RequireComponent(typeof(CharacterController))]
     public class PlayerController : MonoBehaviour
     {
         [Header("Input Settings")] [SerializeField]
@@ -12,7 +13,8 @@ namespace ldjam_58
         private InputAction _clickAction;
         private InputActionMap _playerActionMap;
         [SerializeField] private PlayerWeapons _currentWeapon = PlayerWeapons.Unalivatron;
-
+        [SerializeField] private CursorController _cursorController;
+        
         [Header("Souls Layer Settings")] [SerializeField]
         private LayerMask soulsLayer;
         private Camera _mainCamera;
@@ -27,7 +29,7 @@ namespace ldjam_58
         private void Awake()
         {
             _mainCamera = Camera.main;
-
+            _cursorController = GetComponent<CursorController>();
             if (playerControls is null)
             {
                 throw new MissingComponentException("Input Action Asset is not assigned in the inspector");
@@ -62,7 +64,6 @@ namespace ldjam_58
             }
         }
 
-
         private void OnEnable()
         {
             _clickAction.Enable();
@@ -79,16 +80,15 @@ namespace ldjam_58
 
         private void OnClickPerformed(InputAction.CallbackContext ctx)
         {
-         
+
+            _cursorController.OnClick();
             if (_currentWeapon is not PlayerWeapons.Unalivatron) { HandleClick();};
             _holding = true;
-
-
         }
 
         private void OnClickReleased(InputAction.CallbackContext ctx)
         {
-
+            _cursorController.OnRelease();
             _holding = false;
         }
 
@@ -113,6 +113,7 @@ namespace ldjam_58
         
         public void SetWeapon(PlayerWeapons newWeapon)
         {
+            _cursorController.SetCursor(newWeapon);
             _currentWeapon = newWeapon;
         }
 
