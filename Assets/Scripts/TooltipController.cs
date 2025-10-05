@@ -14,10 +14,8 @@ namespace ldjam_58
         [SerializeField] private TextMeshProUGUI titleText;
         [SerializeField] private TextMeshProUGUI descriptionText;
         [SerializeField] private TextMeshProUGUI flavorText;
-        [SerializeField] private RectTransform tooltipRect;
-        [SerializeField] private Vector2 _offsetFromCursor = new Vector2(5000, 1000); 
-        [SerializeField] private Canvas _canvas;
-
+        private RectTransform _tooltipRect;
+        
         public struct TooltipData
         {
             public string title;
@@ -30,10 +28,8 @@ namespace ldjam_58
         void Awake()
         {
             instance = this;
-
-            if (_canvas == null) _canvas = GetComponentInParent<Canvas>();
+            _tooltipRect = GetComponent<RectTransform>();
             HideTooltip();
-            //gameObject.SetActive(false);
         }
 
         void Update()
@@ -59,55 +55,13 @@ namespace ldjam_58
 
         private void FollowCursor()
         {
-            Vector2 mousePosition = Mouse.current.position.value;
-
-            //RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            //    _canvas.transform as RectTransform,
-            //    mousePosition,
-            //    _canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : _canvas.worldCamera,
-            //    out Vector2 localPoint
-            //);
-
-            //Vector2 adjustedOffset = new Vector2(_offsetFromCursor.x, _offsetFromCursor.y);
-
-            tooltipRect.position = (Vector3)(mousePosition);
-
-           
-
-            //ClampToScreen();
+            var mousePosition = Mouse.current.position.value;
+            var screenMiddle = new Vector2(Screen.width / 2f, Screen.height / 2f);
+            _tooltipRect.pivot = mousePosition.x > screenMiddle.x ? 
+                new Vector2(1, _tooltipRect.pivot.y) :
+                new Vector2(0, _tooltipRect.pivot.y);
+            _tooltipRect.position = mousePosition + new Vector2(0, 18f);
         }
-
-        private void ClampToScreen()
-        {
-            Vector3[] corners = new Vector3[4];
-            tooltipRect.GetWorldCorners(corners);
-
-            Vector2 pos = tooltipRect.localPosition; // Use anchoredPosition, not localPosition
-
-            // Get canvas rect for proper bounds
-            RectTransform canvasRect = _canvas.transform as RectTransform;
-            Vector2 canvasSize = canvasRect.rect.size;
-
-            // Clamp to canvas bounds
-            float tooltipWidth = tooltipRect.rect.width;
-            float tooltipHeight = tooltipRect.rect.height;
-
-            // Clamp X
-            if (pos.x + tooltipWidth > canvasSize.x / 2)
-                pos.x = canvasSize.x / 2 - tooltipWidth;
-            if (pos.x < -canvasSize.x / 2)
-                pos.x = -canvasSize.x / 2;
-
-            // Clamp Y
-            if (pos.y + tooltipHeight > canvasSize.y / 2)
-                pos.y = canvasSize.y / 2 - tooltipHeight;
-            if (pos.y < -canvasSize.y / 2)
-                pos.y = -canvasSize.y / 2;
-
-            tooltipRect.localPosition = pos;
-        }
-
-
         public static void ShowTooltip(Upgrade data)
         {
             Debug.Log("Should show toolkit");

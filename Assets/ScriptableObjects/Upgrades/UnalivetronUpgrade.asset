@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: UnalivetronUpgrade
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.WeaponUpgrade
   upgradeName: Unalivatron-900
+  upgradeDescription: 
   flavorText: asd
   upgradeCost: 12
-  upgradeTier: 3
+  upgradeTier: 2
   upgradeType: 2
   weapon: 3
   gameManagerChannel: {fileID: 11400000, guid: d916912c1e67d3346971655e98d27672, type: 2}
