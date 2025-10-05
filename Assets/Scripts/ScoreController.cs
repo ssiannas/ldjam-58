@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace ldjam_58
@@ -7,6 +8,8 @@ namespace ldjam_58
         [SerializeField] private UIChannel uiChannel;
         [SerializeField] private GameState gameState;
         private uint _souls;
+        private float _passiveIncomeRate = 0f;
+        private float _soulsFloat = 0f;
 
         private void Start()
         {
@@ -22,10 +25,20 @@ namespace ldjam_58
 
             SetSouls(1); // Start at 1 soul
         }
-    
+
+        private void Update()
+        {
+            _soulsFloat += Time.deltaTime * _passiveIncomeRate;
+            if ((uint)_soulsFloat > _souls)
+            {
+                SetSouls((uint)_soulsFloat);
+            }
+        }
+
         private void SetSouls(uint numSouls)
         {
             _souls = numSouls;
+            _soulsFloat = numSouls;
             gameState.CurrentSouls = _souls;
             uiChannel.UpdateScore(_souls.ToString());
         }
@@ -33,6 +46,7 @@ namespace ldjam_58
         public void AddSouls(uint numSouls)
         {
             _souls += numSouls;
+            _soulsFloat += numSouls;
             gameState.CurrentSouls = _souls;
             uiChannel.UpdateScore(_souls.ToString());
         }
@@ -47,6 +61,11 @@ namespace ldjam_58
             _souls -= numSouls;
             gameState.CurrentSouls = _souls;
             uiChannel.UpdateScore(_souls.ToString());
+        }
+
+        public void SetPassiveIncome(float passiveIncome)
+        {
+            _passiveIncomeRate = passiveIncome;
         }
     }
 }

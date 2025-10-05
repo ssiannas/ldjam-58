@@ -12,7 +12,6 @@ namespace ldjam_58
         [SerializeField] private GameState gameState;
         [SerializeField] private float currentPassModifier = 0f;
         
-        private float _timer = 0f;
 
         private void Awake()
         {
@@ -39,19 +38,12 @@ namespace ldjam_58
         // Update is called once per frame
         void Update()
         {
-            _timer += Time.deltaTime;
-
-            if (_timer >= 1f)
-            {
-                channel.AddScore((uint)currentPassModifier);
-                _timer = 0f;
-            }
         }
 
 
         public void SetPassiveIncome(uint passiveModifier) 
         {
-            currentPassModifier = passiveModifier;
+            _scoreController.SetPassiveIncome(passiveModifier);
         }
     }
 }
