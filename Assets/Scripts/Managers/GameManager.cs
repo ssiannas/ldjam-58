@@ -10,7 +10,10 @@ namespace ldjam_58
         private ScoreController _scoreController;
         [SerializeField] private GameManagerChannel channel;
         [SerializeField] private GameState gameState;
-        
+
+        [SerializeField] private float _currentPassModifier = 0f;
+        private float _timer = 0f;
+
         private void Awake()
         {
             _scoreController = GetComponent<ScoreController>();
@@ -26,6 +29,8 @@ namespace ldjam_58
             }
             channel.OnAddScoreRequested += _scoreController.AddSouls;
             channel.OnRemoveScoreRequested += _scoreController.RemoveSouls;
+
+            channel.OnChangePassiveIncomeRequested += SetPassiveIncome;
                 
             DontDestroyOnLoad(this);
             gameState.Reset();
@@ -34,6 +39,19 @@ namespace ldjam_58
         // Update is called once per frame
         void Update()
         {
+            _timer += Time.deltaTime;
+
+            if (_timer >= 1f)
+            {
+                channel.AddScore((uint)_currentPassModifier);
+                _timer = 0f;
+            }
+        }
+
+
+        public void SetPassiveIncome(float passiveModifier) 
+        {
+            _currentPassModifier = passiveModifier;
         }
     }
 }
