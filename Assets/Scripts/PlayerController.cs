@@ -24,6 +24,7 @@ namespace ldjam_58
         private ContactFilter2D _soulsContactFilter = ContactFilter2D.noFilter;
 
         [SerializeField] private GameManagerChannel gameManagerChannel;
+        [SerializeField] private GameState gameState;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         private void Awake()
@@ -119,7 +120,7 @@ namespace ldjam_58
 
         private int HandleWeaponNone(Vector2 worldPos)
         {
-            return Physics2D.OverlapCircle(worldPos, 0.01f, _soulsContactFilter, _soulsHit ); 
+            return Physics2D.OverlapCircle(worldPos, 0.3f, _soulsContactFilter, _soulsHit ); 
         }
         
         private int HandleWeaponNet(Vector2 worldPos)
@@ -151,7 +152,6 @@ namespace ldjam_58
                 var soulComponent = _soulsHit[index].GetComponent<SoulController>();
                 soulComponent?.OnCollected();
             }
-            gameManagerChannel.AddScore((uint)numHits);
         }
     }
 }

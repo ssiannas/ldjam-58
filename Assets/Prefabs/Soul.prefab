@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 197193498404957703}
   - component: {fileID: 8011924892982434404}
   - component: {fileID: 2046729867536077638}
+  - component: {fileID: 8804145288547495497}
   m_Layer: 3
   m_Name: Soul
   m_TagString: Soul
@@ -30,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: -5405164439530168626, guid: 910157e9950a6cb4d9210dabca03a6d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -105,8 +106,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fbdf579c2faa8641b289c46ea94d24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  gameState: {fileID: 11400000, guid: 4b9d6de3c950bdd48b059dff7645f006, type: 2}
+  gameManagerChannel: {fileID: 11400000, guid: d916912c1e67d3346971655e98d27672, type: 2}
+  movementStyle: 0
   moveSpeed: 5
   soulPoints: 1
+  sprintMultiplier: 2
+  sprintDuration: 0.35
+  sprintInterval: 1.5
+  hopInterval: 0.8
+  hopForce: 6
+  hopHeightNoRb: 0.75
+  verticalAmplitude: 0.75
+  verticalFrequency: 2
+  duckAmount: 0.4
+  duckDuration: 0.25
+  duckInterval: 1.2
 --- !u!70 &8011924892982434404
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -142,7 +157,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 2.55, y: 9.71}
   m_Direction: 0
 --- !u!50 &2046729867536077638
 Rigidbody2D:
@@ -171,3 +186,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &8804145288547495497
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6273701657937613254}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a0e99959b455d424a8f45cf81fd11903, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

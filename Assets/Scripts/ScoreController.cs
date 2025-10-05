@@ -29,7 +29,7 @@ namespace ldjam_58
 
         private void Update()
         {
-            _soulsFloat += Time.deltaTime * _passiveIncomeRate;
+            _soulsFloat += Time.deltaTime * _passiveIncomeRate * gameState.CurrentSoulValue;
             if ((uint)_soulsFloat > _souls)
             {
                 SetSouls((uint)_soulsFloat);

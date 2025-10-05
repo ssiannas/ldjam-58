@@ -1,25 +1,33 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace ldjam_58
 {
+    [RequireComponent(typeof(SpriteRenderer))]
     public class CursorController : MonoBehaviour
     {
         [Header("Cursor Textures")]
-        [SerializeField] private Texture2D skellyHandDefault;
-        [SerializeField] private Texture2D skellyHandClicked;
-        [SerializeField] private Texture2D netHandDefault;
-        [SerializeField] private Texture2D netHandClicked;
-        [SerializeField] private Texture2D scytheHandDefault;
-        [SerializeField] private Texture2D scytheHandClicked;
-        [SerializeField] private Texture2D unalivatronHandDefault;
-        [SerializeField] private Texture2D unalivatronHandClicked;
+        [SerializeField] private Sprite skellyHandDefault;
+        [SerializeField] private Sprite skellyHandClicked;
+        [SerializeField] private Sprite netHandDefault;
+        [SerializeField] private Sprite netHandClicked;
+        [SerializeField] private Sprite scytheHandDefault;
+        [SerializeField] private Sprite scytheHandClicked;
+        [SerializeField] private Sprite unalivatronHandDefault;
+        [SerializeField] private Sprite unalivatronHandClicked;
         
-       private Texture2D cursorTexture;
-       private Texture2D cursorTextureClicked;
+        private Sprite cursorTexture;
+        private Sprite cursorTextureClicked;
+        
+        private SpriteRenderer _spriteRenderer;
+        private Camera _cursorCamera;
         
         public Vector2 hotspot = Vector2.zero;
-        
+        private Camera mainCamera;
+        private Image cursorUI;
 
+        private float _scaleFactor = 0.55f;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
@@ -37,19 +45,80 @@ namespace ldjam_58
             
             cursorTexture = skellyHandDefault;
             cursorTextureClicked = skellyHandClicked;
-            
-            Cursor.SetCursor(cursorTexture, hotspot, CursorMode.Auto);
+            _spriteRenderer.sprite = cursorTexture;
+            Cursor.visible = false;
         }
+        
+        void Awake()
+        {
+            transform.localScale = new Vector3(0.2f, 0.2f, 1f);
+            mainCamera = Camera.main;
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _spriteRenderer.enabled = false;
+            CreateCursorUI(); 
+        }
+        void CreateCursorUI()
+        {
+            // Create canvas
+            GameObject canvasObj = new GameObject("CursorCanvas");
+            Canvas canvas = canvasObj.AddComponent<Canvas>();
+            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            canvas.sortingOrder = 10000;
+        
+            // Create cursor
+            GameObject cursorObj = new GameObject("Cursor");
+            cursorObj.transform.SetParent(canvasObj.transform);
+            cursorUI = cursorObj.AddComponent<Image>();
+            cursorUI.raycastTarget = false;
+        
+            // Initial sprite
+            if (_spriteRenderer != null)
+            {
+                cursorUI.sprite = _spriteRenderer.sprite;
+            }
+            UpdatePivotAndSizeFromSprite(_spriteRenderer.sprite);
+            
+            cursorUI.transform.localScale = Vector3.one * _scaleFactor;
+        } 
+  
         
         public void OnClick()
         {
-            Cursor.SetCursor(cursorTextureClicked, hotspot, CursorMode.Auto);
+            _spriteRenderer.sprite = cursorTextureClicked;
         }
         
         public void OnRelease()
         {
-            Cursor.SetCursor(cursorTexture, hotspot, CursorMode.Auto);
+            _spriteRenderer.sprite = cursorTexture;
         }
+
+        private void Update()
+        {
+            cursorUI.sprite = _spriteRenderer.sprite;
+            UpdatePivotAndSizeFromSprite(_spriteRenderer.sprite);
+            Vector3 mousePosition = Mouse.current.position.ReadValue();
+            mousePosition.z = 10.0f; // Set this to be the distance you want the cursor to be from the camera
+            var cursorPosition = mainCamera ? mainCamera.ScreenToWorldPoint(mousePosition) : Vector3.zero;
+            cursorUI.transform.position = mousePosition;
+            transform.position = cursorPosition;
+        }
+        void UpdatePivotAndSizeFromSprite(Sprite sprite)
+        {
+            if (sprite is null) return;
+        
+            // Get normalized pivot from sprite (0-1 range)
+            var normalizedPivot = sprite.pivot / sprite.rect.size;
+            cursorUI.rectTransform.pivot = normalizedPivot;
+        
+            // Calculate size based on sprite size and SpriteRenderer scale
+            var spriteSize = sprite.rect.size;
+            var scaledSize = new Vector2(
+                spriteSize.x * transform.localScale.x,
+                spriteSize.y * transform.localScale.y
+            );
+        
+            cursorUI.rectTransform.sizeDelta = scaledSize;
+        } 
         
         public void SetCursor(PlayerWeapons weapon)
         {
@@ -58,29 +127,25 @@ namespace ldjam_58
                 case PlayerWeapons.None:
                     cursorTexture = skellyHandDefault;
                     cursorTextureClicked = skellyHandClicked;
-                    Cursor.SetCursor(cursorTexture, hotspot, CursorMode.Auto);
                     break;
                 case PlayerWeapons.Net:
                     cursorTexture = netHandDefault;
                     cursorTextureClicked = netHandClicked;
-                    Cursor.SetCursor(cursorTexture, hotspot, CursorMode.Auto);
                     break;
                 case PlayerWeapons.Scythe:
                     cursorTexture = scytheHandDefault;
                     cursorTextureClicked = scytheHandClicked;
-                    Cursor.SetCursor(cursorTexture, hotspot, CursorMode.Auto);
                     break;
                 case PlayerWeapons.Unalivatron:
                     cursorTexture = unalivatronHandDefault;
                     cursorTextureClicked = unalivatronHandClicked;
-                    Cursor.SetCursor(cursorTexture, hotspot, CursorMode.Auto);
                     break;
                 default:
                     cursorTexture = skellyHandDefault;
                     cursorTextureClicked = skellyHandClicked;
-                    Cursor.SetCursor(cursorTexture, hotspot, CursorMode.Auto);
                     break;
             }
+            _spriteRenderer.sprite = cursorTexture;
         }
     }
 }

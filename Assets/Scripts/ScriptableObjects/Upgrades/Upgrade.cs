@@ -12,6 +12,7 @@ namespace ldjam_58
             Minions,
             PassiveIncome,
             SpawnerUpgrade,
+            SoulValueUpgrade,
         }
         [SerializeField] private string upgradeName;
         public string Name
