@@ -120,7 +120,7 @@ namespace ldjam_58
 
         private int HandleWeaponNone(Vector2 worldPos)
         {
-            return Physics2D.OverlapCircle(worldPos, 0.01f, _soulsContactFilter, _soulsHit ); 
+            return Physics2D.OverlapCircle(worldPos, 0.3f, _soulsContactFilter, _soulsHit ); 
         }
         
         private int HandleWeaponNet(Vector2 worldPos)
