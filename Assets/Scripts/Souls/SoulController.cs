@@ -30,11 +30,6 @@ namespace ldjam_58
             _soulMovementController = GetComponent<SoulMovementController>();
         }
 
-        private void Start()
-        {
-
-
-        }
 
         private void Update()
         {
