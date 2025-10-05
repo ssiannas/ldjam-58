@@ -10,7 +10,7 @@ namespace ldjam_58
         [SerializeField] private float reapRadius = 1.0f;
         [SerializeField] private GameManagerChannel _gameManagerChannel;
         
-        private Collider2D[] _soulsBuffer = new Collider2D[600];
+        private readonly Collider2D[] _soulsBuffer = new Collider2D[600];
         private Vector2 _reapPoint;
         private ContactFilter2D _contactFilter;
         private LayerMask _soulLayerMask;

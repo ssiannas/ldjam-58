@@ -18,7 +18,7 @@ namespace ldjam_58
         private Camera _mainCamera;
         private bool _holding = false;
 
-        private Collider2D[] _soulsHit = new Collider2D[500];
+        private readonly Collider2D[] _soulsHit = new Collider2D[500];
         private ContactFilter2D _soulsContactFilter = ContactFilter2D.noFilter;
 
         [SerializeField] private GameManagerChannel gameManagerChannel;
