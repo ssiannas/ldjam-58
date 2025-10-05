@@ -39,20 +39,15 @@ namespace ldjam_58
             yield return new WaitForFixedUpdate();
             while (true)
             {
-                DoReapDelay();
+                StartCoroutine(DoReapDelay());
                 yield return new WaitForSeconds(reapPeriod);
             }
         }
 
 
-
-
-
         private IEnumerator DoReapDelay()
         {
             _isReaping = true;
-
-
             yield return new WaitForSeconds(0.1f);
 
             _animator.SetTrigger("IsReaping");
