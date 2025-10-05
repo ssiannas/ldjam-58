@@ -26,6 +26,8 @@ namespace ldjam_58
         public Vector2 hotspot = Vector2.zero;
         private Camera mainCamera;
         private Image cursorUI;
+        
+        [SerializeField] private UIChannel uiChannel;
 
         private float _scaleFactor = 0.55f;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -42,6 +44,10 @@ namespace ldjam_58
             {
                 throw new MissingComponentException("One or more cursor textures are not assigned in the inspector");
             }
+            if (uiChannel is null)
+            {
+                throw new MissingComponentException("UI Channel is not assigned in the inspector");
+            }
             
             cursorTexture = skellyHandDefault;
             cursorTextureClicked = skellyHandClicked;
@@ -55,6 +61,7 @@ namespace ldjam_58
             mainCamera = Camera.main;
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _spriteRenderer.enabled = false;
+            uiChannel.OnForceUpdateCursor += ScaleCursorUI;
             CreateCursorUI(); 
         }
         void CreateCursorUI()
@@ -77,10 +84,16 @@ namespace ldjam_58
                 cursorUI.sprite = _spriteRenderer.sprite;
             }
             UpdatePivotAndSizeFromSprite(_spriteRenderer.sprite);
-            
-            cursorUI.transform.localScale = Vector3.one * _scaleFactor;
+            ScaleCursorUI(uiChannel.GetCanvasScaleFactor());
         } 
   
+        private void ScaleCursorUI(float canvasScaleFactor)
+        {
+            if (canvasScaleFactor < 1) return;
+            var newScaleFactor = _scaleFactor / canvasScaleFactor;
+            cursorUI.transform.localScale = newScaleFactor * (Vector3.one / canvasScaleFactor);
+        }
+
         
         public void OnClick()
         {
