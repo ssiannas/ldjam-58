@@ -1,10 +1,11 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace ldjam_58
 {
-    public class UpgradeButtonController : MonoBehaviour
+    public class UpgradeButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
 
         [SerializeField] private Upgrade upgradeData;
@@ -77,6 +78,17 @@ namespace ldjam_58
             gameState.CurrentUpgradeTier[upgradeData.Type] += 1;
             MaybeUpdateBtnText();
             _upgradeButton.interactable = false;
+        }
+
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            uiChannel.ShowTooltip(upgradeData);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            uiChannel.HideTooltip();
         }
     }
 }

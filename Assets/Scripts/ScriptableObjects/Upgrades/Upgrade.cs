@@ -13,15 +13,20 @@ namespace ldjam_58
             PassiveIncome,
             SpawnerUpgrade,
         }
-        
-        
         [SerializeField] private string upgradeName;
         public string Name
         {
             get => upgradeName;
             protected set => upgradeName = value;
         }
-        
+
+        [SerializeField] private string upgradeDescription;
+        public string Description
+        {
+            get => upgradeDescription;
+            protected set => upgradeDescription = value;
+        }
+
         [SerializeField] private string flavorText;
         public string FlavorText
         {

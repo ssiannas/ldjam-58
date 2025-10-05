@@ -11,8 +11,7 @@ namespace ldjam_58
         [SerializeField] private GameManagerChannel channel;
         [SerializeField] private GameState gameState;
         [SerializeField] private float currentPassModifier = 0f;
-        [SerializeField] private MinionController[] minions;  
-        [SerializeField] private SpawnerController[] spawners;
+        [SerializeField] private MinionController[] minions;        
 
         private void Awake()
         {
@@ -32,12 +31,8 @@ namespace ldjam_58
 
             channel.OnChangePassiveIncomeRequested += SetPassiveIncome;
             channel.OnSpawnMinionRequested += SpawnMinions;
-
-            channel.OnSpawnerUpgradeRequested += UpgradeSpawner;
-            channel.ResetUpgrades();
-            gameState.Reset();
-            
             DontDestroyOnLoad(this);
+            gameState.Reset();
         }
 
         private void SpawnMinions()
@@ -46,17 +41,6 @@ namespace ldjam_58
             {
                 minion.EnableMinion();
             }
-        }
-
-        private void UpgradeSpawner(uint newTier)
-        {
-            if (newTier >= spawners.Length) { return; }
-            spawners[newTier].ActivateSpawner();
-        }
-
-        private void ResetUpgrades()
-        {
-            channel.ResetUpgrades();
         }
 
         // Update is called once per frame
@@ -74,6 +58,7 @@ namespace ldjam_58
         {
             Time.timeScale = 0f;          
             gameState.IsPaused = true;
+
             //set all animations to idle
         }
 
@@ -81,6 +66,7 @@ namespace ldjam_58
         {
             Time.timeScale = 1f;          
             gameState.IsPaused = false;
+
             //resume all animators
         }
 

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PI2Ninjas
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.PassiveUpgrade
   upgradeName: Ninjas
+  upgradeDescription: Collects a moderate amount of souls over time
   flavorText: '"Side-hustles include cutting onions"'
   upgradeCost: 30
   upgradeTier: 2
