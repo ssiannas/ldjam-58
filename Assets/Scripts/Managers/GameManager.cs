@@ -53,5 +53,20 @@ namespace ldjam_58
         {
             _scoreController.SetPassiveIncome(passiveModifier);
         }
+
+        public void Pause()
+        {
+            Time.timeScale = 0f;          
+            gameState.IsPaused = true;
+            //set all animations to idle
+        }
+
+        public void Resume()
+        {
+            Time.timeScale = 1f;          
+            gameState.IsPaused = false;
+            //resume all animators
+        }
+
     }
 }

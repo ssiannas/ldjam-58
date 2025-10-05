@@ -10,6 +10,7 @@ namespace ldjam_58
     {
          public float SpawnRate = 1.0f;
          public uint CurrentSouls = 1;
+        public bool IsPaused = false;
          public Dictionary<Upgrade.UpgradeType, int> CurrentUpgradeTier = new Dictionary<Upgrade.UpgradeType, int>()
          {
              { Upgrade.UpgradeType.SpawnRate, 0 },
