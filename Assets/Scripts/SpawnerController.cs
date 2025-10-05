@@ -50,8 +50,18 @@ namespace ldjam_58
 
             int index = Random.Range(0, prefabs.Length);
             GameObject prefabToSpawn = prefabs[index];
+            SoulController soul = prefabToSpawn.GetComponent<SoulController>();
+            SoulController.MovementStyle[] values = (SoulController.MovementStyle[])System.Enum.GetValues(typeof(SoulController.MovementStyle));
 
-            Instantiate(prefabToSpawn, position, rotation);
+            soul.movementStyle = values[Random.Range(0, values.Length)];
+
+            GameObject spawedSoul = Instantiate(prefabToSpawn, position, rotation);
+
+            if (spawedSoul.TryGetComponent<SoulController>(out SoulController soulToSpwn))
+            {
+                soulToSpwn.movementStyle = soulToSpwn.GetRandomMovementStyle();
+            }
         }
+  
     }
 }

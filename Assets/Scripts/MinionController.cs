@@ -48,7 +48,7 @@ namespace ldjam_58
             for (var i = 0; i < numHits; i++)
             {
                 var soul = _soulsBuffer[i].GetComponent<SoulController>();
-                soul?.OnColelcted();
+                soul?.OnCollected();
             }
             _gameManagerChannel.AddScore((uint)numHits);
         }

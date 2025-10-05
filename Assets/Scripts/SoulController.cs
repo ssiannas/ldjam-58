@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ldjam_58
 {
-    public class SoulsControllerAlt : MonoBehaviour
+    public class SoulController : MonoBehaviour
     {
         public enum MovementStyle
         {
@@ -167,5 +167,13 @@ namespace ldjam_58
 
         // collection 
         public void OnCollected() => Destroy(gameObject);
+
+
+
+        public MovementStyle GetRandomMovementStyle()
+        {
+            var values = (MovementStyle[])System.Enum.GetValues(typeof(MovementStyle));
+            return values[Random.Range(0, values.Length)];
+        }
     }
 }
