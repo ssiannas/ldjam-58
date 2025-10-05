@@ -14,11 +14,15 @@ namespace ldjam_58
         private Vector2 _reapPoint;
         private ContactFilter2D _contactFilter;
         private LayerMask _soulLayerMask;
-        
+
+        private Animator _animator;
+        private bool _isReaping = false;
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
             gameObject.SetActive(false);
+            _animator = GetComponent<Animator>();
         }
 
         private void Awake()
@@ -35,14 +39,43 @@ namespace ldjam_58
             yield return new WaitForFixedUpdate();
             while (true)
             {
-                DoReap();
+                DoReapDelay();
                 yield return new WaitForSeconds(reapPeriod);
             }
         }
 
+
+
+
+
+        private IEnumerator DoReapDelay()
+        {
+            _isReaping = true;
+
+
+            yield return new WaitForSeconds(0.1f);
+
+            _animator.SetTrigger("IsReaping");
+
+            // Wait for specific frame in animation, then do damage
+            yield return new WaitForSeconds(0.3f); // Time until impact frame
+
+            DoReap(); // Deal damage at the right moment
+
+            // Wait for rest of animation
+            yield return new WaitForSeconds(0.5f);
+
+            _isReaping = false;
+        }
+
+
         private void DoReap()
         {
             // Play Aimation
+
+            
+
+
             var numHits = Physics2D.OverlapCircle(_reapPoint, reapRadius, _contactFilter, _soulsBuffer);
             Debug.Log($"Minion reaped {numHits} souls");
             for (var i = 0; i < numHits; i++)
