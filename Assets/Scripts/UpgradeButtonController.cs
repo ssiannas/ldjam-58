@@ -10,6 +10,7 @@ namespace ldjam_58
         [SerializeField] private Upgrade upgradeData;
         [SerializeField] private GameState gameState;
         [SerializeField] private GameManagerChannel gameManagerChannel;
+        [SerializeField] private UIChannel uiChannel;
         
         // Button 
         private Button _upgradeButton;
@@ -54,7 +55,14 @@ namespace ldjam_58
             {
                 return;
             }
+            if (_upgradeButton.interactable) return;
+            OnUpgradeAvailable();
+        }
+
+        public void OnUpgradeAvailable()
+        {
             _upgradeButton.interactable = true;
+            uiChannel.NotifyUpgradeAvailable();
         }
 
         public void OnPurchase()

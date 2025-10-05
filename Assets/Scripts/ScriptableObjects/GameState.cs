@@ -8,7 +8,7 @@ namespace ldjam_58
     [CreateAssetMenu(fileName = "GameState", menuName = "SO/GameState")]
     public class GameState : ScriptableObject
     {
-         public float SpawnInterval = 2.0f;
+         public float SpawnRate = 1.0f;
          public uint CurrentSouls = 1;
          public Dictionary<Upgrade.UpgradeType, int> CurrentUpgradeTier = new Dictionary<Upgrade.UpgradeType, int>()
          {
@@ -19,12 +19,12 @@ namespace ldjam_58
          };
          
          [Header("Reset Values")]
-         [SerializeField] float defaultSpawnInterval = 2.0f;
+         [SerializeField] float defaultSpawnRate = 2.0f;
          [SerializeField] uint defaultCurrentSouls = 1;
          
          public void Reset()
          {
-             SpawnInterval = defaultSpawnInterval;
+             SpawnRate = defaultSpawnRate;
              CurrentSouls = defaultCurrentSouls;
 
              foreach (Upgrade.UpgradeType upgradeType in Enum.GetValues(typeof(Upgrade.UpgradeType)))
