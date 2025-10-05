@@ -91,10 +91,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe2f0d6cd4390646972b32c1e0e4d5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.CursorController
-  skellyHandDefault: {fileID: 2800000, guid: d182191ebde2d8045a864d280afbef73, type: 3}
-  skellyHandClicked: {fileID: 2800000, guid: 5ffbffd9c40d61d4190e54ef2af0d24e, type: 3}
+  skellyHandDefault: {fileID: 2800000, guid: 8159fd3dc929a90408ae4576e6b59dca, type: 3}
+  skellyHandClicked: {fileID: 2800000, guid: b72613a6ee5738046b66ccac44a4807d, type: 3}
   netHandDefault: {fileID: 2800000, guid: 4f8a111aec781ca4d836a06874fd835e, type: 3}
-  netHandClicked: {fileID: 2800000, guid: 06ad1ba93feb27e4886418c432d2d259, type: 3}
+  netHandClicked: {fileID: 2800000, guid: 220822e14bc76af44b704d34dc5f564a, type: 3}
   scytheHandDefault: {fileID: 2800000, guid: f8c80d38bcd46e745b282bcabf9eafb5, type: 3}
   scytheHandClicked: {fileID: 2800000, guid: 997e3f0732bdf9540aee67fe7162a7d3, type: 3}
   unalivatronHandDefault: {fileID: 2800000, guid: 5c48a59b9ca62dc4483863a49679763d, type: 3}
