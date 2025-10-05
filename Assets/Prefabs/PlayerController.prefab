@@ -101,6 +101,7 @@ MonoBehaviour:
   unalivatronHandDefault: {fileID: 21300000, guid: 5c48a59b9ca62dc4483863a49679763d, type: 3}
   unalivatronHandClicked: {fileID: 21300000, guid: d5d82c3e90dd27a488a3b99c22b518cf, type: 3}
   hotspot: {x: 0, y: 0}
+  uiChannel: {fileID: 11400000, guid: 37e555768fb56f34bb3a7d1277b9a7db, type: 2}
 --- !u!212 &47685151840100689
 SpriteRenderer:
   m_ObjectHideFlags: 0

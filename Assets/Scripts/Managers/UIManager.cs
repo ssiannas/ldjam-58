@@ -23,10 +23,12 @@ namespace ldjam_58
         [SerializeField] private TextMeshProUGUI timerText;
         [SerializeField] private UIChannel uiChannel;
         
+        private Canvas _canvas;
         private int _availableUpgrades;
         [SerializeField] private PopUpUIController popUpUIController;
-        
-        
+
+        private Vector2Int _cachedResolution;
+       
         void Awake()
         {
             if (timerText is null)
@@ -50,7 +52,10 @@ namespace ldjam_58
             uiChannel.OnUpgradeAvailable += DisplayAvailableUpgrades;
             uiChannel.OnUpdateScore += SetScoreText;
             uiChannel.OnUpgradeReset += ResetAvailableUpgrades;
+            uiChannel.OnGetCanvasScaleFactor += GetCanvasScaleFactor;
             popUpUIController = GetComponent<PopUpUIController>();
+            _canvas = GetComponent<Canvas>();
+            _cachedResolution = new Vector2Int(Screen.width, Screen.height);
             SetUpgradesText();
         }
 
@@ -93,6 +98,17 @@ namespace ldjam_58
             // Trim down to MM:SS
             timeSpan = new TimeSpan(0, timeSpan.Minutes, timeSpan.Seconds);
             SetTimerText(timeSpan.ToString(@"mm\:ss"));
+            if (Screen.width != _cachedResolution.x || Screen.height != _cachedResolution.y)
+            {
+                _cachedResolution = new Vector2Int(Screen.width, Screen.height);
+                uiChannel.ForceUpdateCursor(GetCanvasScaleFactor());
+            }
+        }
+
+        private float GetCanvasScaleFactor()
+        {
+            Canvas.ForceUpdateCanvases();
+            return _canvas.scaleFactor;
         }
     }
 }

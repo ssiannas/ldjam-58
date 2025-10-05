@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,6 +13,8 @@ namespace ldjam_58
         public UnityAction OnRequestUpgradeData;
         public UnityAction<Upgrade> OnShowTooltip;
         public UnityAction OnHideTooltip;
+        public Func<float> OnGetCanvasScaleFactor;
+        public UnityAction<float> OnForceUpdateCursor;
 
         public void UpdateScore(string newScore)
         {
@@ -41,6 +44,16 @@ namespace ldjam_58
         public void HideTooltip()
         {
             OnHideTooltip?.Invoke();
+        }
+        
+        public float GetCanvasScaleFactor()
+        {
+            return OnGetCanvasScaleFactor?.Invoke() ?? 1f;  
+        }
+
+        public void ForceUpdateCursor(float newAspect)
+        {
+            OnForceUpdateCursor?.Invoke(newAspect);
         }
 
     }
