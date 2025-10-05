@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 namespace ldjam_58
 {
+    [RequireComponent(typeof(PopUpUIController))]
     public class UIManager : MonoBehaviour
     {
 
@@ -23,6 +24,7 @@ namespace ldjam_58
         [SerializeField] private UIChannel uiChannel;
         
         private int _availableUpgrades;
+        [SerializeField] private PopUpUIController popUpUIController;
         
         
         void Awake()
@@ -48,6 +50,7 @@ namespace ldjam_58
             uiChannel.OnUpgradeAvailable += DisplayAvailableUpgrades;
             uiChannel.OnUpdateScore += SetScoreText;
             uiChannel.OnUpgradeReset += ResetAvailableUpgrades;
+            popUpUIController = GetComponent<PopUpUIController>();
             SetUpgradesText();
         }
 
@@ -71,7 +74,9 @@ namespace ldjam_58
 
         private void SetUpgradesText()
         {
+            if (popUpUIController.IsVisible && _availableUpgrades > 0) return;
             _upgradeButtonText.text = _availableUpgrades > 0 ? $"Upgrades ({_availableUpgrades})" : "Upgrades";
+            _upgradeButtonSprite.color = _availableUpgrades > 0 ? _upgradeAvailableColor : _upgradeUnavailableColor;
         }
 
         private void SetTimerText(string text)

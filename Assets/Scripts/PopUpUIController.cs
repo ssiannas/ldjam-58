@@ -11,6 +11,11 @@ namespace ldjam_58
         [SerializeField] private Button openButton;
         [SerializeField] private Button closeButton;
         private bool _isVisible;
+        public bool IsVisible
+        {
+            get => _isVisible; 
+            private set => _isVisible = value;
+        }
         [SerializeField] private UIChannel uiChannel;
         
         void Awake()

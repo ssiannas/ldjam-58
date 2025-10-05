@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 namespace ldjam_58
@@ -59,6 +60,7 @@ namespace ldjam_58
                 return;
             }
             _souls -= numSouls;
+            _soulsFloat -= numSouls;
             gameState.CurrentSouls = _souls;
             uiChannel.UpdateScore(_souls.ToString());
         }
