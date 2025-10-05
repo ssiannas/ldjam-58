@@ -15,8 +15,8 @@ namespace ldjam_58
 
         public override void ApplyUpgrade()
         {
-            var newSpawnrate = (1 + spawnRateIncrease) * gameState.SpawnRate;
-            gameState.SpawnRate = newSpawnrate;
+            var newSpawnrate = (1 + spawnRateIncrease) * gameState.CurrentSpawnRate;
+            gameState.CurrentSpawnRate = newSpawnrate;
         } 
     }
 }

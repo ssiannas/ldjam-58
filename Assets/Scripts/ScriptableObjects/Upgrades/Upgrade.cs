@@ -11,6 +11,7 @@ namespace ldjam_58
             WeaponUpgrade,
             Minions,
             PassiveIncome,
+            SpawnerUpgrade,
         }
         
         

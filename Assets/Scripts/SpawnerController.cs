@@ -23,7 +23,7 @@ namespace ldjam_58
         void Update()
         {
             timer += Time.deltaTime;
-            var timeToSpawn = 1 / gameState.SpawnRate;
+            var timeToSpawn = 1 / gameState.CurrentSpawnRate;
             if (timer >= timeToSpawn)
             {
                 StartCoroutine(Spawn());
@@ -62,6 +62,10 @@ namespace ldjam_58
                 soulToSpwn.movementStyle = soulToSpwn.GetRandomMovementStyle();
             }
         }
-  
+        
+        public void ActivateSpawner()
+        {
+           gameObject.SetActive(true);
+        }
     }
 }
