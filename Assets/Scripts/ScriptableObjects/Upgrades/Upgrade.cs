@@ -12,6 +12,7 @@ namespace ldjam_58
             Minions,
             PassiveIncome,
             SpawnerUpgrade,
+            SoulValueUpgrade,
         }
         
         

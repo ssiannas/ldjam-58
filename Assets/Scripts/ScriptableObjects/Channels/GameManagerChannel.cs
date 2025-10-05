@@ -16,6 +16,7 @@ namespace ldjam_58
       public UnityAction OnSpawnMinionRequested;
       public UnityAction<uint> OnSpawnerUpgradeRequested;
       public UnityAction OnUpgradeResetRequested;
+      public UnityAction<uint> OnUpgradeSoulValueRequested;
       
       public void StartGame()
       {
@@ -65,6 +66,11 @@ namespace ldjam_58
       public void ResetUpgrades()
       {
          OnUpgradeResetRequested?.Invoke();
+      }
+      
+      public void UpgradeSoulValue(uint newSoulValue)
+      {
+         OnUpgradeSoulValueRequested?.Invoke(newSoulValue);
       }
     }
 }

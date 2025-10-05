@@ -12,9 +12,12 @@ namespace ldjam_58
             Hopper,
             SineWave,
             ZigZag,
-            Ducker
+            Ducker,
         }
-
+        
+        [SerializeField] private GameState gameState;
+        [SerializeField] private GameManagerChannel gameManagerChannel;
+        
         [Header("Soul Settings")] public MovementStyle movementStyle = MovementStyle.Runner;
         public float moveSpeed = 5f;
         public int soulPoints = 1;
@@ -54,6 +57,14 @@ namespace ldjam_58
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
+            if (gameState is null)
+            {
+                throw new MissingComponentException("GameState is not assigned in the inspector");
+            }
+            if (gameManagerChannel is null)
+            {
+                throw new MissingComponentException("GameManagerChannel is not assigned in the inspector");
+            }
         }
 
         private void Start()
@@ -105,7 +116,7 @@ namespace ldjam_58
 
         void UpdateHopper()
         {
-            if (_rb != null)
+            if (_rb)
             {
                 if (_t >= _nextHopTime)
                 {
@@ -166,8 +177,11 @@ namespace ldjam_58
         }
 
         // collection 
-        public void OnCollected() => Destroy(gameObject);
-
+        public void OnCollected()
+        {
+            gameManagerChannel.AddScore(gameState.CurrentSoulValue);
+            Destroy(gameObject);
+        }
 
 
         public MovementStyle GetRandomMovementStyle()

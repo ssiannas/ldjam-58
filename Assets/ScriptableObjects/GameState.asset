@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13bdbd7232402744a0a181a480012ab, type: 3}
   m_Name: GameState
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.GameState
-  SpawnRate: 8.796
-  CurrentSouls: 100
+  CurrentSpawnRate: 2
+  CurrentSouls: 357
+  CurrentSoulValue: 5
+  CurrentSpawnerTier: 0
   defaultSpawnRate: 2
   defaultCurrentSouls: 1
+  defaultCurrentSoulValue: 1

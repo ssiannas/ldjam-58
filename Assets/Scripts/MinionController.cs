@@ -50,7 +50,6 @@ namespace ldjam_58
                 var soul = _soulsBuffer[i].GetComponent<SoulController>();
                 soul?.OnCollected();
             }
-            _gameManagerChannel.AddScore((uint)numHits);
         }
         
         public void EnableMinion()

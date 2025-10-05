@@ -34,6 +34,7 @@ namespace ldjam_58
             channel.OnSpawnMinionRequested += SpawnMinions;
 
             channel.OnSpawnerUpgradeRequested += UpgradeSpawner;
+            channel.OnUpgradeSoulValueRequested += UpgradeSoulValue;
             channel.ResetUpgrades();
             gameState.Reset();
             
@@ -68,6 +69,11 @@ namespace ldjam_58
         public void SetPassiveIncome(uint passiveModifier) 
         {
             _scoreController.SetPassiveIncome(passiveModifier);
+        }
+        
+        private void UpgradeSoulValue(uint newSoulValue)
+        {
+            gameState.CurrentSoulValue = newSoulValue;
         }
     }
 }

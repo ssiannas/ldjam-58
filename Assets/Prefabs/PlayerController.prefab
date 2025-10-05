@@ -48,11 +48,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.PlayerController
   playerControls: {fileID: -944628639613478452, guid: 7578237d14af170479bd84aad5b93130, type: 3}
   _currentWeapon: 0
-  _cursorController: {fileID: 0}
+  _cursorController: {fileID: 8250126129943368309}
   soulsLayer:
     serializedVersion: 2
     m_Bits: 8
   gameManagerChannel: {fileID: 11400000, guid: d916912c1e67d3346971655e98d27672, type: 2}
+  gameState: {fileID: 11400000, guid: 4b9d6de3c950bdd48b059dff7645f006, type: 2}
 --- !u!143 &7463303891940554070
 CharacterController:
   m_ObjectHideFlags: 0
@@ -90,12 +91,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe2f0d6cd4390646972b32c1e0e4d5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.CursorController
-  skellyHandDefault: {fileID: 2800000, guid: 56bc03585abc2844286fd7d3d51637e3, type: 3}
-  skellyHandClicked: {fileID: 2800000, guid: 86bd4d4b0df45594b84164526b6b58b2, type: 3}
+  skellyHandDefault: {fileID: 2800000, guid: d182191ebde2d8045a864d280afbef73, type: 3}
+  skellyHandClicked: {fileID: 2800000, guid: 5ffbffd9c40d61d4190e54ef2af0d24e, type: 3}
   netHandDefault: {fileID: 2800000, guid: 4f8a111aec781ca4d836a06874fd835e, type: 3}
   netHandClicked: {fileID: 2800000, guid: 06ad1ba93feb27e4886418c432d2d259, type: 3}
-  scytheHandDefault: {fileID: 2800000, guid: 56bc03585abc2844286fd7d3d51637e3, type: 3}
-  scytheHandClicked: {fileID: 2800000, guid: 86bd4d4b0df45594b84164526b6b58b2, type: 3}
-  unalivatronHandDefault: {fileID: 2800000, guid: 56bc03585abc2844286fd7d3d51637e3, type: 3}
-  unalivatronHandClicked: {fileID: 2800000, guid: 86bd4d4b0df45594b84164526b6b58b2, type: 3}
+  scytheHandDefault: {fileID: 2800000, guid: f8c80d38bcd46e745b282bcabf9eafb5, type: 3}
+  scytheHandClicked: {fileID: 2800000, guid: 997e3f0732bdf9540aee67fe7162a7d3, type: 3}
+  unalivatronHandDefault: {fileID: 2800000, guid: 5c48a59b9ca62dc4483863a49679763d, type: 3}
+  unalivatronHandClicked: {fileID: 2800000, guid: d5d82c3e90dd27a488a3b99c22b518cf, type: 3}
   hotspot: {x: 0, y: 0}

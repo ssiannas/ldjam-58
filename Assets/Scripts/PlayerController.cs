@@ -24,6 +24,7 @@ namespace ldjam_58
         private ContactFilter2D _soulsContactFilter = ContactFilter2D.noFilter;
 
         [SerializeField] private GameManagerChannel gameManagerChannel;
+        [SerializeField] private GameState gameState;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         private void Awake()
@@ -151,7 +152,6 @@ namespace ldjam_58
                 var soulComponent = _soulsHit[index].GetComponent<SoulController>();
                 soulComponent?.OnCollected();
             }
-            gameManagerChannel.AddScore((uint)numHits);
         }
     }
 }
