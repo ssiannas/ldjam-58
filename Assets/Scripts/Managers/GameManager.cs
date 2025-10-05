@@ -11,7 +11,7 @@ namespace ldjam_58
         [SerializeField] private GameManagerChannel channel;
         [SerializeField] private GameState gameState;
         [SerializeField] private float currentPassModifier = 0f;
-        
+        [SerializeField] private MinionController[] minions;        
 
         private void Awake()
         {
@@ -30,9 +30,17 @@ namespace ldjam_58
             channel.OnRemoveScoreRequested += _scoreController.RemoveSouls;
 
             channel.OnChangePassiveIncomeRequested += SetPassiveIncome;
-                
+            channel.OnSpawnMinionRequested += SpawnMinions;
             DontDestroyOnLoad(this);
             gameState.Reset();
+        }
+
+        private void SpawnMinions()
+        {
+            foreach (var minion in minions)
+            {
+                minion.EnableMinion();
+            }
         }
 
         // Update is called once per frame

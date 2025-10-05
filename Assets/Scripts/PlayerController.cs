@@ -11,18 +11,15 @@ namespace ldjam_58
         
         private InputAction _clickAction;
         private InputActionMap _playerActionMap;
-
-
-
         [SerializeField] private PlayerWeapons _currentWeapon = PlayerWeapons.Unalivatron;
 
-
         [Header("Souls Layer Settings")] [SerializeField]
-        private LayerMask soulsLayer = 3;
-
+        private LayerMask soulsLayer;
         private Camera _mainCamera;
-
         private bool _holding = false;
+
+        private Collider2D[] _soulsHit = new Collider2D[500];
+        private ContactFilter2D _soulsContactFilter = ContactFilter2D.noFilter;
 
         [SerializeField] private GameManagerChannel gameManagerChannel;
         
@@ -52,6 +49,8 @@ namespace ldjam_58
             {
                 Debug.Log("Could not find 'Player' action map in Input Action Asset!");
             }
+            soulsLayer = LayerMask.NameToLayer("Souls");
+            _soulsContactFilter.SetLayerMask(1 << soulsLayer);
         }
 
         // Update is called once per frame
@@ -117,12 +116,12 @@ namespace ldjam_58
             _currentWeapon = newWeapon;
         }
 
-        private Collider2D[] HandleWeaponNone(Vector2 worldPos)
+        private int HandleWeaponNone(Vector2 worldPos)
         {
-            return Physics2D.OverlapCircleAll(worldPos, 0.01f, soulsLayer);
+            return Physics2D.OverlapCircle(worldPos, 0.01f, _soulsContactFilter, _soulsHit ); 
         }
-
-        private Collider2D[] HandleWeaponNet(Vector2 worldPos)
+        
+        private int HandleWeaponNet(Vector2 worldPos)
         {
             Vector2 xOffset = new Vector2(1.5f, 0.0f);
             Vector2 leftPonit = worldPos - xOffset;
@@ -131,30 +130,27 @@ namespace ldjam_58
             float angle = Mathf.Atan2(rightPonit.y - leftPonit.y, rightPonit.x - leftPonit.x) * Mathf.Rad2Deg;
 
             // Very small thickness → almost like a line
-            Collider2D[] hit = Physics2D.OverlapCapsuleAll(worldPos, new Vector2(distance, 0.01f), CapsuleDirection2D.Horizontal, angle);
-
-            return hit;
+            return  Physics2D.OverlapCapsule(worldPos, new Vector2(distance, 0.01f), CapsuleDirection2D.Horizontal, angle, _soulsContactFilter, _soulsHit);
         }
 
-        private Collider2D[] HandleWeaponScythe(Vector2 worldPos)
+        private int HandleWeaponScythe(Vector2 worldPos)
         {
-            var hit = Physics2D.OverlapCircleAll(worldPos, 3.0f, soulsLayer);
-            return hit;
+            return Physics2D.OverlapCircle(worldPos, 3.0f, _soulsContactFilter, _soulsHit);
         }
 
-        private Collider2D[] HandleWeaponUnalivatron(Vector2 worldPos)
+        private int HandleWeaponUnalivatron(Vector2 worldPos)
         {
-            return Physics2D.OverlapCircleAll(worldPos, 0.1f, soulsLayer);
+            return Physics2D.OverlapCircle(worldPos, 0.1f, _soulsContactFilter, _soulsHit);
         }
 
-        private void CollectSouls(Collider2D[] soulsHit)
+        private void CollectSouls(int numHits)
         {
-            foreach (var soul in soulsHit)
+            for (var index = 0; index < numHits; index++)
             {
-                var soulComponent = soul.GetComponent<SoulController>();
+                var soulComponent = _soulsHit[index].GetComponent<SoulController>();
                 soulComponent?.OnColelcted();
             }
-            gameManagerChannel.AddScore((uint)soulsHit.Length);
+            gameManagerChannel.AddScore((uint)numHits);
         }
     }
 }

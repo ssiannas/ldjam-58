@@ -13,6 +13,7 @@ namespace ldjam_58
       public UnityAction<uint> OnRemoveScoreRequested;
       public UnityAction<PlayerWeapons> OnChangePlayerWeaponRequested;
       public UnityAction<uint> OnChangePassiveIncomeRequested;
+      public UnityAction OnSpawnMinionRequested;
 
       public void StartGame()
       {
@@ -44,10 +45,14 @@ namespace ldjam_58
          OnChangePlayerWeaponRequested?.Invoke(newWeapon);  
       }
 
-        public void ChangePassiveIncome(uint incomeModifier)
-        {
-            OnChangePassiveIncomeRequested?.Invoke(incomeModifier);
-        }
-
+      public void ChangePassiveIncome(uint incomeModifier)
+      {
+         OnChangePassiveIncomeRequested?.Invoke(incomeModifier);
+      }
+      
+      public void SpawnMinion()
+      {
+         OnSpawnMinionRequested?.Invoke();
+      }
     }
 }
