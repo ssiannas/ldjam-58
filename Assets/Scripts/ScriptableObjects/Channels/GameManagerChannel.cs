@@ -12,7 +12,7 @@ namespace ldjam_58
       public UnityAction<uint> OnAddScoreRequested;
       public UnityAction<uint> OnRemoveScoreRequested;
       public UnityAction<PlayerWeapons> OnChangePlayerWeaponRequested;
-      public UnityAction<float> OnChangePassiveIncomeRequested;
+      public UnityAction<uint> OnChangePassiveIncomeRequested;
 
       public void StartGame()
       {
@@ -44,7 +44,7 @@ namespace ldjam_58
          OnChangePlayerWeaponRequested?.Invoke(newWeapon);  
       }
 
-        public void ChangePassiveIncome(float incomeModifier)
+        public void ChangePassiveIncome(uint incomeModifier)
         {
             OnChangePassiveIncomeRequested?.Invoke(incomeModifier);
         }

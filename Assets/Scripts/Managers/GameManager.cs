@@ -10,8 +10,8 @@ namespace ldjam_58
         private ScoreController _scoreController;
         [SerializeField] private GameManagerChannel channel;
         [SerializeField] private GameState gameState;
-
-        [SerializeField] private float _currentPassModifier = 0f;
+        [SerializeField] private float currentPassModifier = 0f;
+        
         private float _timer = 0f;
 
         private void Awake()
@@ -43,15 +43,15 @@ namespace ldjam_58
 
             if (_timer >= 1f)
             {
-                channel.AddScore((uint)_currentPassModifier);
+                channel.AddScore((uint)currentPassModifier);
                 _timer = 0f;
             }
         }
 
 
-        public void SetPassiveIncome(float passiveModifier) 
+        public void SetPassiveIncome(uint passiveModifier) 
         {
-            _currentPassModifier = passiveModifier;
+            currentPassModifier = passiveModifier;
         }
     }
 }

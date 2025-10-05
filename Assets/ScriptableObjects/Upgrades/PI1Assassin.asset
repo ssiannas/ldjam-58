@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e074bd3ce17b86646ae31bfb4a779c23, type: 3}
-  m_Name: Ninjas
+  m_Name: PI1Assassin
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.PassiveUpgrade
-  upgradeName: Ninjas
-  flavorText: '"Side-hustles include cutting onions"'
-  upgradeCost: 30
-  upgradeTier: 2
+  upgradeName: Assassin
+  flavorText: '"Board recomends name change to sub-contracted part-time collectors"'
+  upgradeCost: 15
+  upgradeTier: 1
   upgradeType: 4
-  passiveModifier: 5
+  passiveModifier: 1
   gameManagerChannel: {fileID: 11400000, guid: d916912c1e67d3346971655e98d27672, type: 2}
