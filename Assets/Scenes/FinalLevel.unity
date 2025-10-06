@@ -817,6 +817,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 677593771253036559, guid: 6112a204a466dfe4394d153e138815ad, type: 3}
+      propertyPath: uiChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: 37e555768fb56f34bb3a7d1277b9a7db, type: 2}
     - target: {fileID: 717262401595839489, guid: 6112a204a466dfe4394d153e138815ad, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
