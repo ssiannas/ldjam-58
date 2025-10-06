@@ -47,8 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.SpawnerController
   gameState: {fileID: 11400000, guid: 4b9d6de3c950bdd48b059dff7645f006, type: 2}
-  prefabs:
+  walkerPrefabs:
   - {fileID: 6273701657937613254, guid: 6faffae99d88761489858f4711256d22, type: 3}
+  - {fileID: 6273701657937613254, guid: 719b143cf52a56a4999123d995a835b2, type: 3}
+  flyerPrefabs:
+  - {fileID: 6273701657937613254, guid: 63802ecb8faa5c84193c389ebc694892, type: 3}
   spawnPoint: {fileID: 0}
 --- !u!1 &1254029723864630235
 GameObject:

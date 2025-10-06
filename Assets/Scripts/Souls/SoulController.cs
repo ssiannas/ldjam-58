@@ -22,6 +22,7 @@ namespace ldjam_58
         private MovementStyle _movementStyle = MovementStyle.Runner;
         private SpriteRenderer _spriteRenderer;
         private SoulMovementController _soulMovementController;
+        
         // duck doooooooooooodgers
 
         void Start() {
@@ -44,6 +45,10 @@ namespace ldjam_58
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
+        public void Initialize(SoulType soulType)
+        {
+            _soulMovementController.Init(soulType);
+        }
 
         private void Update()
         {

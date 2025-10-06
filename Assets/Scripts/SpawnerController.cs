@@ -7,7 +7,8 @@ namespace ldjam_58
     public class SpawnerController : MonoBehaviour
     {
         [SerializeField] private GameState gameState;
-        [Header("Prefabs to Spawn")] public GameObject[] prefabs;
+        [Header("Prefabs to Spawn")] public GameObject[] walkerPrefabs;
+        [Header("Prefabs to Spawn")] public GameObject[] flyerPrefabs;
         [Header("Spawn Settings")] public Transform spawnPoint;
         private float timer;
         
@@ -46,6 +47,7 @@ namespace ldjam_58
 
         void SpawnPrefab()
         {
+            var prefabs = _soulType == SoulController.SoulType.Walker ? walkerPrefabs : flyerPrefabs;
             if (prefabs == null || prefabs.Length == 0)
             {
                 return;
@@ -56,7 +58,9 @@ namespace ldjam_58
 
             int index = Random.Range(0, prefabs.Length);
             GameObject prefabToSpawn = prefabs[index];
-            Instantiate(prefabToSpawn, position, rotation);
+            var newGO = Instantiate(prefabToSpawn, position, rotation);
+            var soulController = newGO.GetComponent<SoulController>();
+            soulController.Initialize(_soulType);
         }
 
         public void ActivateSpawner()

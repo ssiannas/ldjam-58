@@ -64,20 +64,25 @@ namespace ldjam_58
             }
         }
 
-        private void SetInitialDirection()
+        private void SetInitialDirection(SoulController.SoulType soulType)
         {
-            _direction = new Vector2(DirectionToCenter().x, 0);
+            var dir = DirectionToCenter();
+           dir.y = soulType == SoulController.SoulType.Walker ? 0 : dir.y;
+           _direction = dir;
         }
-        
-        
-        private void Awake()
+
+        public void Awake()
         {
+            
             _rb = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
             _defaultBehavior = new RunnerBehaviour();
             _mainCamera = Camera.main;
+        }
+        public void Init(SoulController.SoulType soulType)
+        {
            InitializeBehaviors(); 
-           SetInitialDirection();
+           SetInitialDirection(soulType);
         }
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
