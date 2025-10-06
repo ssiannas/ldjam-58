@@ -42,6 +42,7 @@ namespace ldjam_58
         void Update()
         {
             ShouldEnableButton();
+            ShouldDisableButton();
         }
         
         void ShouldEnableButton()
@@ -57,6 +58,16 @@ namespace ldjam_58
             }
             if (_upgradeButton.interactable) return;
             OnUpgradeAvailable();
+        }
+
+
+        void ShouldDisableButton()
+        {
+            if (upgradeData.UpgradeCost > gameState.CurrentSouls)
+            {
+                _upgradeButton.interactable = false;
+                return;
+            }
         }
 
         public void OnUpgradeAvailable()
