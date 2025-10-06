@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Scythe
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.Weapon
   WeaponType: 2
-  SwooshPrefab: {fileID: 0}
+  SwooshPrefab: {fileID: 2652026553449846003, guid: 6c7ce4c6fccf92142b400b1107379d2e, type: 3}

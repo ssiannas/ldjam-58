@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 694574499958872190}
   - component: {fileID: -5741145833471110936}
   m_Layer: 0
-  m_Name: SwoosScythe
+  m_Name: SwooshScythe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
