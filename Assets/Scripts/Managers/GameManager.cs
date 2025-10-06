@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ldjam_58
 {
-    [RequireComponent(typeof(ScoreController))]
+    [RequireComponent(typeof(ScoreController), typeof(SpawnerMasterController))]
     public class GameManager : MonoBehaviour
     {
         private ScoreController _scoreController;
@@ -13,9 +13,11 @@ namespace ldjam_58
         [SerializeField] private float currentPassModifier = 0f;
         [SerializeField] private MinionController[] minions;
         [SerializeField] private SpawnerController[] spawners;
-
+        private SpawnerMasterController _spawnerMasterController;
+        
         private void Awake()
         {
+            _spawnerMasterController = GetComponent<SpawnerMasterController>();
             _scoreController = GetComponent<ScoreController>();
             if (_scoreController is null)
             {
@@ -54,8 +56,7 @@ namespace ldjam_58
 
         private void UpgradeSpawner(uint newTier)
         {
-            if (newTier >= spawners.Length) { return; }
-            spawners[newTier].ActivateSpawner();
+            _spawnerMasterController.UnlockNextSpawner(newTier);
         }
 
 

@@ -72,7 +72,6 @@ namespace ldjam_58
 
 
             var numHits = Physics2D.OverlapCircle(_reapPoint, reapRadius, _contactFilter, _soulsBuffer);
-            Debug.Log($"Minion reaped {numHits} souls");
             for (var i = 0; i < numHits; i++)
             {
                 var soul = _soulsBuffer[i].GetComponent<SoulController>();

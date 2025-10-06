@@ -7,7 +7,7 @@ namespace ldjam_58
     public class SpawnerUpgrade : Upgrade
     {
         [SerializeField] private GameManagerChannel gmChannel;
-        private readonly uint _maxTier = 4;
+        public uint MaxTier = 4;
         [SerializeField] private uint _baseCost = 500;
         private void Reset()
         {
@@ -24,7 +24,7 @@ namespace ldjam_58
         public override void ApplyUpgrade()
         {
             gmChannel.UpgradeSpawner(UpgradeTier);
-            UpgradeTier = Math.Min(UpgradeTier + 1, _maxTier);
+            UpgradeTier = Math.Min(UpgradeTier + 1, MaxTier);
             UpgradeCost = (uint)(UpgradeCost * 5.5f);
         }
     }

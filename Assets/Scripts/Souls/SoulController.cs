@@ -10,6 +10,11 @@ namespace ldjam_58
     [RequireComponent(typeof(SoulMovementController))]
     public class SoulController : MonoBehaviour
     {
+        public enum SoulType
+        {
+            Walker,
+            Flyer
+        };
         
         [SerializeField] private GameState gameState;
         [SerializeField] private GameManagerChannel gameManagerChannel;

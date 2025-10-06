@@ -10,13 +10,19 @@ namespace ldjam_58
         [Header("Prefabs to Spawn")] public GameObject[] prefabs;
         [Header("Spawn Settings")] public Transform spawnPoint;
         private float timer;
+        
+        public SoulController.SoulType EnemyType
+        {
+            get => _soulType; 
+            set => _soulType = value;
+        }
+        private SoulController.SoulType _soulType;
 
         void Awake()
         {
             if (gameState is null)
             {
-                Debug.LogError("GameState ScriptableObject is not assigned in PrefabSpawner!", this);
-                return;
+                throw new MissingComponentException("GameState is not assigned in the inspector");
             }
         }
         
@@ -56,6 +62,11 @@ namespace ldjam_58
         public void ActivateSpawner()
         {
            gameObject.SetActive(true);
+        }
+        
+        public void DeactivateSpawner()
+        {
+            gameObject.SetActive(false);
         }
     }
 }
