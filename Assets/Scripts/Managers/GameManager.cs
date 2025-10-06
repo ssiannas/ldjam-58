@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -39,6 +40,10 @@ namespace ldjam_58
 
             channel.OnSpawnerUpgradeRequested += UpgradeSpawner;
             channel.OnUpgradeSoulValueRequested += UpgradeSoulValue;
+            
+            channel.OnPauseRequested += Pause;
+            channel.OnResumeRequested += Resume;
+            
             channel.ResetUpgrades();
             gameState.Reset();
             
@@ -66,6 +71,9 @@ namespace ldjam_58
         {
         }
 
+        private void Start()
+        {
+        }
 
         public void SetPassiveIncome(uint passiveModifier) 
         {

@@ -583,6 +583,7 @@ MonoBehaviour:
   scoreText: {fileID: 5986258703922477425}
   timerText: {fileID: 8122353646683219716}
   uiChannel: {fileID: 11400000, guid: 37e555768fb56f34bb3a7d1277b9a7db, type: 2}
+  gameManagerChannel: {fileID: 11400000, guid: d916912c1e67d3346971655e98d27672, type: 2}
   popUpUIController: {fileID: 3260810245889348671}
 --- !u!114 &3260810245889348671
 MonoBehaviour:

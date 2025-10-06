@@ -21,7 +21,10 @@ namespace ldjam_58
         [Header("UI Elements")]
         [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private TextMeshProUGUI timerText;
+        
+        [Header("Channels")]
         [SerializeField] private UIChannel uiChannel;
+        [SerializeField] private GameManagerChannel gameManagerChannel;
         
         private Canvas _canvas;
         private int _availableUpgrades;
@@ -32,6 +35,22 @@ namespace ldjam_58
         void Awake()
         {
             _dialogBoxController = GetComponentInChildren<DialogueBoxController>();
+            
+            CheckMissingComponents();
+            uiChannel.OnUpgradeAvailable += DisplayAvailableUpgrades;
+            uiChannel.OnUpdateScore += SetScoreText;
+            uiChannel.OnUpgradeReset += ResetAvailableUpgrades;
+            uiChannel.OnGetCanvasScaleFactor += GetCanvasScaleFactor;
+            uiChannel.OnShowDialog += MaybeShowDialogue;
+            
+            popUpUIController = GetComponent<PopUpUIController>();
+            _canvas = GetComponent<Canvas>();
+            _cachedResolution = new Vector2Int(Screen.width, Screen.height);
+            SetUpgradesText();
+        }
+
+        private void CheckMissingComponents()
+        {
             if (_dialogBoxController is null)
             {
                 throw new MissingComponentException("DialogueBoxController not found in children");
@@ -39,30 +58,23 @@ namespace ldjam_58
 
             if (timerText is null)
             {
-                Debug.LogError("Timer Text is not assigned in the inspector", this);
-                return;
+                throw new MissingComponentException("TimerText not found in children");
             }
 
             if (scoreText is null)
             {
-                Debug.LogError("Score Text is not assigned in the inspector", this);
-                return;
+                throw new MissingComponentException("ScoreText not found in children");
             }
 
             if (uiChannel is null)
             {
-                Debug.LogError("UI Channel is not assigned in the inspector", this);
-                return;
+                throw new MissingComponentException("UIChannel is not assigned in the inspector");
             }
-
-            uiChannel.OnUpgradeAvailable += DisplayAvailableUpgrades;
-            uiChannel.OnUpdateScore += SetScoreText;
-            uiChannel.OnUpgradeReset += ResetAvailableUpgrades;
-            uiChannel.OnGetCanvasScaleFactor += GetCanvasScaleFactor;
-            popUpUIController = GetComponent<PopUpUIController>();
-            _canvas = GetComponent<Canvas>();
-            _cachedResolution = new Vector2Int(Screen.width, Screen.height);
-            SetUpgradesText();
+            
+            if (gameManagerChannel is null)
+            {
+                throw new MissingComponentException("GameManagerChannel is not assigned in the inspector");
+            }
         }
 
         private void SetScoreText(string text)
@@ -73,6 +85,7 @@ namespace ldjam_58
 
         private void MaybeShowDialogue(string id)
         {
+            gameManagerChannel.PauseGame();
             _dialogBoxController?.ShowTextById(id);
         }
         

@@ -17,6 +17,8 @@ namespace ldjam_58
       public UnityAction<uint> OnSpawnerUpgradeRequested;
       public UnityAction OnUpgradeResetRequested;
       public UnityAction<uint> OnUpgradeSoulValueRequested;
+      public UnityAction OnPauseRequested;
+      public UnityAction OnResumeRequested;
       
       public void StartGame()
       {
@@ -31,6 +33,16 @@ namespace ldjam_58
       public void RestartGame()
       {
          OnGameRestartRequested?.Invoke();
+      }
+      
+      public void PauseGame()
+      {
+         OnPauseRequested?.Invoke();
+      }
+      
+      public void ResumeGame()
+      {
+         OnResumeRequested?.Invoke();
       }
       
       public void AddScore(uint score)

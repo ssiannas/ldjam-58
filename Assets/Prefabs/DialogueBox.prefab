@@ -58,6 +58,7 @@ MonoBehaviour:
   padding: {x: 20, y: 20}
   minHeight: 100
   maxHeight: 150
+  gameManagerChannel: {fileID: 11400000, guid: d916912c1e67d3346971655e98d27672, type: 2}
   uiChannel: {fileID: 11400000, guid: 37e555768fb56f34bb3a7d1277b9a7db, type: 2}
 --- !u!1 &4697275452650521756
 GameObject:

@@ -29,17 +29,15 @@ namespace ldjam_58
         // We could play dialogue audio clips if needed
         // Or something for on-dialogue sfx... we'll see
         private AudioSource _audioSource;
-        [SerializeField] private UIChannel uiChannel;
+        [SerializeField] private GameManagerChannel gameManagerChannel;
 
         private void Awake()
         {
             _audioSource = gameObject.AddComponent<AudioSource>();
-            if (uiChannel is null)
+            if (gameManagerChannel is null)
             {
-                throw new MissingComponentException("UIChannel is not assigned in the inspector");
+                throw new MissingComponentException("GameManagerChannel is not assigned in the inspector");
             }
-
-            uiChannel.OnShowDialog += ShowTextById;
         }
 
         private void Start()
@@ -157,7 +155,7 @@ namespace ldjam_58
             {
                 _audioSource.Stop();
             }
-
+            gameManagerChannel.ResumeGame();
             gameObject.SetActive(false);
         }
 
