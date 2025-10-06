@@ -1,5 +1,7 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace ldjam_58
 {
@@ -13,8 +15,14 @@ namespace ldjam_58
         [SerializeField] private GameManagerChannel gameManagerChannel;
         
         private MovementStyle _movementStyle = MovementStyle.Runner;
+        private SpriteRenderer _spriteRenderer;
         private SoulMovementController _soulMovementController;
         // duck doooooooooooodgers
+
+        void Start() {
+            
+
+        }
 
         private void Awake()
         {
@@ -28,12 +36,26 @@ namespace ldjam_58
             }
             _movementStyle = GetRandomMovementStyle();
             _soulMovementController = GetComponent<SoulMovementController>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
 
         private void Update()
         {
              _soulMovementController.UpdateMovement(_movementStyle); 
+             MaybeFlipSprite();
+        }
+        
+        private void MaybeFlipSprite()
+        {
+            if (_soulMovementController.MovementDirection.x > 0)
+            {
+                _spriteRenderer.flipX = false;
+            }
+            else if (_soulMovementController.MovementDirection.x < 0)
+            {
+                _spriteRenderer.flipX = true;
+            }
         }
 
 
