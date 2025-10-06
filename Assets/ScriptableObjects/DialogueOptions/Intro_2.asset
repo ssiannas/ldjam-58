@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac21ed6b6abe4ed2a76ef4edaf93c5e6, type: 3}
+  m_Name: Intro_2
+  m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.Dialogues.DialogueEntry
+  id: intro_2
+  text: oute misi psixi mesa se oxi 2 alla 3 aiwniwtites. kapou opa
+  characterName: Harry Grimm
+  voiceClip: {fileID: 0}

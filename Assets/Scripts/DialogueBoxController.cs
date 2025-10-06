@@ -103,7 +103,7 @@ namespace ldjam_58
             {
                 dialogText.text += letter;
                 UpdateBoxSize();
-                yield return new WaitForSeconds(delay);
+                yield return new WaitForSecondsRealtime(delay);
             }
 
             _isTyping = false;

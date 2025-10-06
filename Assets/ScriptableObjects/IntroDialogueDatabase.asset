@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2b182a82fd64969a343a4603da7ce9d, type: 3}
-  m_Name: DialogueDatabase
+  m_Name: IntroDialogueDatabase
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.Dialogues.DialogueDatabase
   entries:
-  - {fileID: 11400000, guid: 505bdb7f98aabb6468a0b96fd8728334, type: 2}
-  - {fileID: 11400000, guid: 505bdb7f98aabb6468a0b96fd8728334, type: 2}
+  - {fileID: 11400000, guid: 8097069f824fee2419f53ed66d0a8f1a, type: 2}
+  - {fileID: 11400000, guid: 11b53cd5359af454e93dd8650b8dc3a8, type: 2}
+  - {fileID: 11400000, guid: a44470f776d39a34bb1809038584eb7c, type: 2}
+  - {fileID: 11400000, guid: 1e4fdb8770a35ec45ae089314fb10ff3, type: 2}

@@ -1206,6 +1206,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7380300090902208832, guid: 6112a204a466dfe4394d153e138815ad, type: 3}
+      propertyPath: uiChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: 37e555768fb56f34bb3a7d1277b9a7db, type: 2}
+    - target: {fileID: 7380300090902208832, guid: 6112a204a466dfe4394d153e138815ad, type: 3}
       propertyPath: minions.Array.size
       value: 2
       objectReference: {fileID: 0}
