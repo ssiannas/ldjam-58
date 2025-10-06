@@ -67,10 +67,6 @@ namespace ldjam_58
         private void DoReap()
         {
             // Play Aimation
-
-            
-
-
             var numHits = Physics2D.OverlapCircle(_reapPoint, reapRadius, _contactFilter, _soulsBuffer);
             for (var i = 0; i < numHits; i++)
             {

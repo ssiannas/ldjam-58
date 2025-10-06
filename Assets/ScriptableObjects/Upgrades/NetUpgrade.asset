@@ -18,5 +18,5 @@ MonoBehaviour:
   upgradeCost: 10
   upgradeTier: 1
   upgradeType: 2
-  weapon: 1
+  weapon: {fileID: 11400000, guid: c36eb0ddd8e02604baf2bc1c3e7a4f86, type: 2}
   gameManagerChannel: {fileID: 11400000, guid: d916912c1e67d3346971655e98d27672, type: 2}

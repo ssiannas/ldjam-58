@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace ldjam_58
@@ -12,7 +13,7 @@ namespace ldjam_58
         
         private InputAction _clickAction;
         private InputActionMap _playerActionMap;
-        [SerializeField] private PlayerWeapons _currentWeapon = PlayerWeapons.Unalivatron;
+        [SerializeField] private Weapon _currentWeapon;
         [SerializeField] private CursorController _cursorController;
         
         [Header("Souls Layer Settings")] [SerializeField]
@@ -52,6 +53,12 @@ namespace ldjam_58
             {
                 Debug.Log("Could not find 'Player' action map in Input Action Asset!");
             }
+
+            if (_currentWeapon is null)
+            {
+                throw new MissingComponentException("Current Weapon is not assigned in the inspector. Add default weapon" +
+                                                    "option");
+            }
             soulsLayer = LayerMask.NameToLayer("Souls");
             _soulsContactFilter.SetLayerMask(1 << soulsLayer);
         }
@@ -59,7 +66,7 @@ namespace ldjam_58
         // Update is called once per frame
         void Update()
         {
-            if(_currentWeapon is PlayerWeapons.Unalivatron && _holding)
+            if(_currentWeapon.WeaponType is PlayerWeapons.Unalivatron && _holding)
             {
                 HandleClick();
             }
@@ -83,7 +90,7 @@ namespace ldjam_58
         {
 
             _cursorController.OnClick();
-            if (_currentWeapon is not PlayerWeapons.Unalivatron) { HandleClick();};
+            if (_currentWeapon.WeaponType is not PlayerWeapons.Unalivatron) { HandleClick();};
             _holding = true;
         }
 
@@ -96,25 +103,36 @@ namespace ldjam_58
 
         private void HandleClick()
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
+            
             // Convert mouse position to world position for 2D
             var mousePosition = Mouse.current.position.ReadValue();
             var worldPosition = _mainCamera.ScreenToWorldPoint(mousePosition);
             worldPosition.z = 0;
 
-            var soulsHit = _currentWeapon switch
+            if (_currentWeapon.SwooshPrefab != null)
+            {
+                Instantiate(_currentWeapon.SwooshPrefab, worldPosition, Quaternion.identity);
+            }
+            
+            var soulsHit = _currentWeapon.WeaponType switch
             {
                 PlayerWeapons.None => HandleWeaponNone(worldPosition),
                 PlayerWeapons.Net => HandleWeaponNet(worldPosition),
                 PlayerWeapons.Scythe => HandleWeaponScythe(worldPosition),
                 PlayerWeapons.Unalivatron => HandleWeaponUnalivatron(worldPosition),
+                _ => throw new ArgumentOutOfRangeException()
             };
             
             CollectSouls(soulsHit);
         }
         
-        public void SetWeapon(PlayerWeapons newWeapon)
+        public void SetWeapon(Weapon newWeapon)
         {
-            _cursorController.SetCursor(newWeapon);
+            _cursorController.SetCursor(newWeapon.WeaponType);
             _currentWeapon = newWeapon;
         }
 
