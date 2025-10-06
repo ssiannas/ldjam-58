@@ -14,6 +14,7 @@ namespace ldjam_58
         [SerializeField] private MinionController[] minions;
         [SerializeField] private SpawnerController[] spawners;
         private SpawnerMasterController _spawnerMasterController;
+        [SerializeField] private UIChannel uiChannel;
         
         private void Awake()
         {

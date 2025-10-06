@@ -28,9 +28,15 @@ namespace ldjam_58
         [SerializeField] private PopUpUIController popUpUIController;
 
         private Vector2Int _cachedResolution;
-       
+        private DialogueBoxController _dialogBoxController;
         void Awake()
         {
+            _dialogBoxController = GetComponentInChildren<DialogueBoxController>();
+            if (_dialogBoxController is null)
+            {
+                throw new MissingComponentException("DialogueBoxController not found in children");
+            }
+
             if (timerText is null)
             {
                 Debug.LogError("Timer Text is not assigned in the inspector", this);
@@ -63,6 +69,11 @@ namespace ldjam_58
         {
             if (scoreText is null) return;
             scoreText.text = text;
+        }
+
+        private void MaybeShowDialogue(string id)
+        {
+            _dialogBoxController?.ShowTextById(id);
         }
         
         public void DisplayAvailableUpgrades()

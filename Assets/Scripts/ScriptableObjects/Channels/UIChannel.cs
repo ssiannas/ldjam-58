@@ -15,6 +15,7 @@ namespace ldjam_58
         public UnityAction OnHideTooltip;
         public Func<float> OnGetCanvasScaleFactor;
         public UnityAction<float> OnForceUpdateCursor;
+        public UnityAction<string> OnShowDialog;
 
         public void UpdateScore(string newScore)
         {
@@ -55,6 +56,10 @@ namespace ldjam_58
         {
             OnForceUpdateCursor?.Invoke(newAspect);
         }
-
+        
+        public void ShowDialog(string id)
+        {
+            OnShowDialog?.Invoke(id);
+        }
     }
 }
