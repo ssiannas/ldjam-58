@@ -65,16 +65,22 @@ namespace ldjam_58
             _spawnerMasterController.UnlockNextSpawner(newTier);
         }
 
-        float timer = 0f;
+        //float timer = 0f;
+        //bool flag = true;
         // Update is called once per frame
         void Update()
         {
+            //timer += Time.deltaTime;
+            //if(timer>2.5f && flag)
+            //{
+            //    uiChannel.ShowDialog("test");
+            //    flag = false;
+            //}
         }
 
 
         private void Start()
         {
-            uiChannel.ShowDialog("test");
         }
 
         public void SetPassiveIncome(uint passiveModifier) 
