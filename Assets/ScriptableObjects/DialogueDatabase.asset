@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: DialogueDatabase
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.Dialogues.DialogueDatabase
   entries:
-  - {fileID: 11400000, guid: 505bdb7f98aabb6468a0b96fd8728334, type: 2}
-  - {fileID: 11400000, guid: 505bdb7f98aabb6468a0b96fd8728334, type: 2}
+  - {fileID: 11400000, guid: 8097069f824fee2419f53ed66d0a8f1a, type: 2}

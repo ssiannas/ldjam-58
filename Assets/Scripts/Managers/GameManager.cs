@@ -48,7 +48,6 @@ namespace ldjam_58
             gameState.Reset();
             
             DontDestroyOnLoad(this);
-
         }
 
         private void SpawnMinions()
