@@ -1,7 +1,6 @@
 using System.Collections;
 using ldjam_58.Dialogues;
 using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -31,6 +30,8 @@ namespace ldjam_58
         private bool _isTyping;
         private int _currentSequenceIndex;
         private string[] _currentSequence;
+
+        private bool doNotHideOnComplete = false;
 
         // We could play dialogue audio clips if needed
         // Or something for on-dialogue sfx... we'll see
@@ -84,8 +85,9 @@ namespace ldjam_58
 
         }
 
-        public void ShowTextById(string id)
+        public void ShowTextById(string id, bool keepOnComplete = false)
         {
+            doNotHideOnComplete = keepOnComplete;
             if (database == null)
             {
                 throw new MissingComponentException("DialogueDatabase is not assigned in the inspector");
@@ -105,7 +107,7 @@ namespace ldjam_58
 
             float delay = 1f / lettersPerSecond;
 
-            foreach (char letter in _currentText)
+            foreach (var letter in _currentText)
             {
                 dialogText.text += letter;
                 UpdateBoxSize();
@@ -115,8 +117,9 @@ namespace ldjam_58
             _isTyping = false;
         }
 
-        public void ShowDialogueSequence(string[] ids)
+        public void ShowDialogueSequence(string[] ids, bool keepOnComplete = false)
         {
+            doNotHideOnComplete = keepOnComplete;
             if (ids == null || ids.Length == 0)
             {
                 Debug.LogWarning("Cannot play empty dialogue sequence");
@@ -166,7 +169,7 @@ namespace ldjam_58
             if (!inputPressed) return;
             if (_isTyping)
             {
-                CompleteText();
+                CompleteCurrentText();
             }
             else
             {
@@ -177,33 +180,27 @@ namespace ldjam_58
             }
         }
 
-        
-        public void CompleteText()
+        private void CompleteCurrentText()
         {
-            if (_isTyping && _typingCoroutine != null)
-            {
-                StopCoroutine(_typingCoroutine);
-                dialogText.text = _currentText;
-                UpdateBoxSize();
-                _isTyping = false;
-            }
+            if (!_isTyping || _typingCoroutine == null) return;
+            StopCoroutine(_typingCoroutine);
+            dialogText.text = _currentText;
+            UpdateBoxSize();
+            _isTyping = false;
         }
-
+        
         private void CompleteDialogue()
         {
-            if (_isTyping && _typingCoroutine != null)
+            CompleteCurrentText();
+            if (doNotHideOnComplete)
             {
-                StopCoroutine(_typingCoroutine);
-                dialogText.text = _currentText;
-                UpdateBoxSize();
-                _isTyping = false;
-            } 
-            Hide();
-            
+                Hide();
+            }
             OnDialogueComplete?.Invoke();
+            OnDialogueComplete = null;
         }
 
-        public void Hide()
+        private void Hide()
         {
             if (_typingCoroutine != null)
             {
