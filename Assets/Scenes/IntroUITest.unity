@@ -527,6 +527,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 803474744}
     m_Modifications:
+    - target: {fileID: 1422483435539955077, guid: 9e13f140cb3250949bc45d638ea7f851, type: 3}
+      propertyPath: m_fontSize
+      value: 29.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422483435539955077, guid: 9e13f140cb3250949bc45d638ea7f851, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 965d2d5c5b8ff0a4d88740b85763a75c, type: 2}
+    - target: {fileID: 1422483435539955077, guid: 9e13f140cb3250949bc45d638ea7f851, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 29.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422483435539955077, guid: 9e13f140cb3250949bc45d638ea7f851, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1124472443903966103, guid: 965d2d5c5b8ff0a4d88740b85763a75c, type: 2}
+    - target: {fileID: 1422483435539955077, guid: 9e13f140cb3250949bc45d638ea7f851, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2347607637361700983, guid: 9e13f140cb3250949bc45d638ea7f851, type: 3}
       propertyPath: m_Name
       value: DialogueBox
@@ -561,6 +581,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2584989117620564853, guid: 9e13f140cb3250949bc45d638ea7f851, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5945855119086581241, guid: 9e13f140cb3250949bc45d638ea7f851, type: 3}
+      propertyPath: m_Color.b
+      value: 0.2735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 5945855119086581241, guid: 9e13f140cb3250949bc45d638ea7f851, type: 3}
+      propertyPath: m_Color.g
+      value: 0.2735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 5945855119086581241, guid: 9e13f140cb3250949bc45d638ea7f851, type: 3}
+      propertyPath: m_Color.r
+      value: 0.2735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 8696506388521183559, guid: 9e13f140cb3250949bc45d638ea7f851, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 965d2d5c5b8ff0a4d88740b85763a75c, type: 2}
+    - target: {fileID: 8696506388521183559, guid: 9e13f140cb3250949bc45d638ea7f851, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1124472443903966103, guid: 965d2d5c5b8ff0a4d88740b85763a75c, type: 2}
+    - target: {fileID: 8696506388521183559, guid: 9e13f140cb3250949bc45d638ea7f851, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9143836568855533942, guid: 9e13f140cb3250949bc45d638ea7f851, type: 3}

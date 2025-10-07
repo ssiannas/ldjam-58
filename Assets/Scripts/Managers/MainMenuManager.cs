@@ -9,7 +9,7 @@ namespace ldjam_58
     // This is called by the Start button
     public void StartGame()
         {
-            SceneManager.LoadScene("MainScene");
+            SceneManager.LoadScene("IntroUITest");
         }
         public void QuitGame()
         {
