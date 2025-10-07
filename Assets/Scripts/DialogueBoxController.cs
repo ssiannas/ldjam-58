@@ -1,7 +1,9 @@
 using System.Collections;
 using ldjam_58.Dialogues;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -20,11 +22,15 @@ namespace ldjam_58
         [SerializeField] private Vector2 padding = new(20f, 20f);
         [SerializeField] private float minHeight = 100f;
         [SerializeField] private float maxHeight = 400f;
+        
+        public UnityAction OnDialogueComplete;
 
         private Coroutine _typingCoroutine;
         private string _currentText;
 
         private bool _isTyping;
+        private int _currentSequenceIndex;
+        private string[] _currentSequence;
 
         // We could play dialogue audio clips if needed
         // Or something for on-dialogue sfx... we'll see
@@ -109,6 +115,41 @@ namespace ldjam_58
             _isTyping = false;
         }
 
+        public void ShowDialogueSequence(string[] ids)
+        {
+            if (ids == null || ids.Length == 0)
+            {
+                Debug.LogWarning("Cannot play empty dialogue sequence");
+                return;
+            }
+    
+            _currentSequence = ids;
+            _currentSequenceIndex = 0;
+            gameObject.SetActive(true);
+            ShowNextInSequence();
+        }
+        
+        private void ShowNextInSequence()
+        {
+
+            if (_currentSequence == null || _currentSequenceIndex >= _currentSequence.Length)
+            {
+                CompleteSequence();
+                return;
+            }
+
+            string id = _currentSequence[_currentSequenceIndex];
+            ShowTextById(id);
+            _currentSequenceIndex++;
+        }
+        
+        private void CompleteSequence()
+        {
+                _currentSequence = null;
+                _currentSequenceIndex = 0;
+                CompleteDialogue();
+        }
+        
         private void UpdateBoxSize()
         {
             LayoutRebuilder.ForceRebuildLayoutImmediate(dialogText.rectTransform);
@@ -129,10 +170,14 @@ namespace ldjam_58
             }
             else
             {
-                Hide();
+                if (_currentSequence != null)
+                    ShowNextInSequence();
+                else
+                    CompleteDialogue();
             }
         }
 
+        
         public void CompleteText()
         {
             if (_isTyping && _typingCoroutine != null)
@@ -142,6 +187,20 @@ namespace ldjam_58
                 UpdateBoxSize();
                 _isTyping = false;
             }
+        }
+
+        private void CompleteDialogue()
+        {
+            if (_isTyping && _typingCoroutine != null)
+            {
+                StopCoroutine(_typingCoroutine);
+                dialogText.text = _currentText;
+                UpdateBoxSize();
+                _isTyping = false;
+            } 
+            Hide();
+            
+            OnDialogueComplete?.Invoke();
         }
 
         public void Hide()

@@ -12,6 +12,7 @@ namespace ldjam_58
         [Header("Channels")]
         [SerializeField] private UIChannel uiChannel;
         private DialogueBoxController _dialogBoxController;
+        private readonly string[] _introSequence = {"intro_1", "intro_2", "intro_3", "intro_4"};
         void Awake()
         {
             _dialogBoxController = GetComponentInChildren<DialogueBoxController>();
@@ -21,14 +22,19 @@ namespace ldjam_58
 
         private void Start()
         {
-            MaybeShowDialogue("intro_1");
-        }
+            MaybeShowSequence(_introSequence);
+    }
         
         private void MaybeShowDialogue(string id)
         {
             _dialogBoxController?.ShowTextById(id);
         }
 
+        private void MaybeShowSequence(string[] sequence)
+        {
+            _dialogBoxController?.ShowDialogueSequence(sequence);
+        }
+        
         // Update is called once per frame
         void Update()
         {
