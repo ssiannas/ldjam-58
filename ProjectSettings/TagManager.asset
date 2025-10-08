@@ -42,5 +42,8 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Transition
+    uniqueID: 3464950423
+    locked: 0
   m_RenderingLayers:
   - Default
