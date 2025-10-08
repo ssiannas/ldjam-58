@@ -1331,6 +1331,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6258795329019579984, guid: 6e92eeda581078a42bed1d34c6e01b24, type: 3}
+      propertyPath: sounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258795329019579984, guid: 6e92eeda581078a42bed1d34c6e01b24, type: 3}
+      propertyPath: sounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1a0a39360bba34d468670104b2414185, type: 3}
+    - target: {fileID: 6258795329019579984, guid: 6e92eeda581078a42bed1d34c6e01b24, type: 3}
+      propertyPath: sounds.Array.data[0].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258795329019579984, guid: 6e92eeda581078a42bed1d34c6e01b24, type: 3}
+      propertyPath: sounds.Array.data[0].pitch
+      value: 1.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258795329019579984, guid: 6e92eeda581078a42bed1d34c6e01b24, type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258795329019579984, guid: 6e92eeda581078a42bed1d34c6e01b24, type: 3}
+      propertyPath: sounds.Array.data[0].soundName
+      value: main_theme
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1380,6 +1404,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45be4341d7de2fb4995f4de84d15dd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.MainMenuManager
+  boneCursor: {fileID: 2800000, guid: 90c38552ae839d44f9a64efc6a8704fd, type: 3}
+  audioChannel: {fileID: 11400000, guid: b2548d1c7f4699945b90313781350be3, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

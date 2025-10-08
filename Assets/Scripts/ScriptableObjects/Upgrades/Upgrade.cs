@@ -14,11 +14,11 @@ namespace ldjam_58
             SpawnerUpgrade,
             SoulValueUpgrade,
         }
-        [SerializeField] private string upgradeName;
-        public string Name
+        [SerializeField] private string upgradeUpgradeName;
+        public string UpgradeName
         {
-            get => upgradeName;
-            protected set => upgradeName = value;
+            get => upgradeUpgradeName;
+            protected set => upgradeUpgradeName = value;
         }
 
         [SerializeField] private string upgradeDescription;

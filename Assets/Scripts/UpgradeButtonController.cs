@@ -79,7 +79,7 @@ namespace ldjam_58
         private void MaybeUpdateBtnText()
         {
             var btnText = GetComponentInChildren<TextMeshProUGUI>();
-            btnText.text = $"{upgradeData.Name}\nCost: {upgradeData.UpgradeCost}\n";
+            btnText.text = $"{upgradeData.UpgradeName}\nCost: {upgradeData.UpgradeCost}\n";
         }
 
         public void OnPurchase()

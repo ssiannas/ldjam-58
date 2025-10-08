@@ -65,7 +65,7 @@ namespace ldjam_58
         public static void ShowTooltip(Upgrade data)
         {
             Debug.Log("Should show toolkit");
-            instance.titleText.text = data.Name;
+            instance.titleText.text = data.UpgradeName;
             instance.descriptionText.text = data.Description;
             instance.flavorText.text = data.FlavorText;
             instance.gameObject.SetActive(true);
