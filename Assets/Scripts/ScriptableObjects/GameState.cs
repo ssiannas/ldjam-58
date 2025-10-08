@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
@@ -13,20 +14,24 @@ namespace ldjam_58
         public bool IsPaused = false;
          public uint CurrentSoulValue = 1;
 
-         public Dictionary<Upgrade.UpgradeType, int> CurrentUpgradeTier = new Dictionary<Upgrade.UpgradeType, int>()
-         {
-             { Upgrade.UpgradeType.SpawnRate, 0 },
-             { Upgrade.UpgradeType.WeaponUpgrade, 0 },
-             { Upgrade.UpgradeType.Minions, 0 },
-             { Upgrade.UpgradeType.PassiveIncome, 0 },
-             { Upgrade.UpgradeType.SpawnerUpgrade, 0}
-         };
+         public ConcurrentDictionary<Upgrade.UpgradeType, int> CurrentUpgradeTier;
          public uint CurrentSpawnerTier = 0;
          
          [Header("Reset Values")]
          [SerializeField] float defaultSpawnRate = 2.0f;
          [SerializeField] uint defaultCurrentSouls = 1;
          [SerializeField] uint defaultCurrentSoulValue = 1;
+
+         private void OnEnable()
+         {
+             CurrentUpgradeTier = new ConcurrentDictionary<Upgrade.UpgradeType, int>( new Dictionary<Upgrade.UpgradeType, int>() {
+                 { Upgrade.UpgradeType.SpawnRate, 0 },
+                 { Upgrade.UpgradeType.WeaponUpgrade, 0 },
+                 { Upgrade.UpgradeType.Minions, 0 },
+                 { Upgrade.UpgradeType.PassiveIncome, 0 },
+                 { Upgrade.UpgradeType.SpawnerUpgrade, 0}
+             });
+         }
          public void Reset()
          {
              CurrentSpawnRate = defaultSpawnRate;
