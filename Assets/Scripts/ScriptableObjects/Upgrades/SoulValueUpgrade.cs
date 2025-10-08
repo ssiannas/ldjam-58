@@ -26,7 +26,7 @@ namespace ldjam_58
         {
             gmChannel.UpgradeSoulValue(_baseSoulValue * 5);
             UpgradeTier = Math.Min(UpgradeTier + 1, _maxTier);
-            UpgradeCost = (uint)(UpgradeCost * 4.8f);
+            UpgradeCost = (uint)(UpgradeCost * 5.5);
         }
     }
 }

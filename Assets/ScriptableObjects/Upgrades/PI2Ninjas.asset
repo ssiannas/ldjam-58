@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e074bd3ce17b86646ae31bfb4a779c23, type: 3}
   m_Name: PI2Ninjas
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.PassiveUpgrade
-  upgradeName: Ninjas
+  upgradeUpgradeName: 
   upgradeDescription: Collects a moderate amount of souls over time
   flavorText: '"Side-hustles include cutting onions"'
-  upgradeCost: 30
+  upgradeCost: 5000
   upgradeTier: 2
   upgradeType: 4
-  passiveModifier: 5
+  passiveModifier: 150
   gameManagerChannel: {fileID: 11400000, guid: d916912c1e67d3346971655e98d27672, type: 2}

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e074bd3ce17b86646ae31bfb4a779c23, type: 3}
   m_Name: PI3ExplodingKittens
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.PassiveUpgrade
-  upgradeName: Exploding Kittens
+  upgradeUpgradeName: 
   upgradeDescription: Collects a moderate amount of souls over time
   flavorText: '"WARNING DO NOT PET"'
-  upgradeCost: 50
+  upgradeCost: 50000
   upgradeTier: 3
   upgradeType: 4
-  passiveModifier: 10
+  passiveModifier: 1000
   gameManagerChannel: {fileID: 11400000, guid: d916912c1e67d3346971655e98d27672, type: 2}

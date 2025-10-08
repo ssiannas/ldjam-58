@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8a8130e27b8a224caba27a8e37e5854, type: 3}
   m_Name: MinionUpgrade
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.MinionUpgrade
-  upgradeName: Nigel Jr.
+  upgradeUpgradeName: 
   upgradeDescription: Summon ally that periodically Collects
   flavorText: Involuntary Intern (he's my kid)
-  upgradeCost: 15
+  upgradeCost: 40000
   upgradeTier: 1
   upgradeType: 3
   gameManagerChannel: {fileID: 11400000, guid: d916912c1e67d3346971655e98d27672, type: 2}

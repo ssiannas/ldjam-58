@@ -8,6 +8,7 @@ namespace ldjam_58
     {
         [SerializeField] private UIChannel uiChannel;
         [SerializeField] private GameState gameState;
+        [SerializeField] private uint startingSoulAmount = 1;
         private uint _souls;
         private float _passiveIncomeRate = 0f;
         private float _soulsFloat = 0f;
@@ -24,7 +25,7 @@ namespace ldjam_58
                 throw new MissingComponentException("GameState is not assigned in the inspector");
             }
 
-            SetSouls(1); // Start at 1 soul
+            SetSouls(startingSoulAmount); // Start at 1 soul
         }
 
         private void Update()

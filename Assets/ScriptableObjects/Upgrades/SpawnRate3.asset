@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b43320a0f28a94297b621ccf297f91, type: 3}
   m_Name: SpawnRate3
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.SpawnRateUpgrade
-  upgradeName: SR3
+  upgradeUpgradeName: 
   upgradeDescription: Souls turn up extremelly fast
   flavorText: Like pigeons at a bread convention
-  upgradeCost: 2000
+  upgradeCost: 100000
   upgradeTier: 3
   upgradeType: 1
-  spawnRateIncrease: 0.3
+  spawnRateIncrease: 1.125
   gameState: {fileID: 11400000, guid: 4b9d6de3c950bdd48b059dff7645f006, type: 2}

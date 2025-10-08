@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9715a8553ae24030b1141340a610b12b, type: 3}
   m_Name: SoulValueUpgrade
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.SoulValueUpgrade
-  upgradeName: SoulValue
+  upgradeUpgradeName: 
   upgradeDescription: Increase number of soul per Collection
   flavorText: "Souls have been upgraded to \u2018moderately priceless\u2019"
   upgradeCost: 1000

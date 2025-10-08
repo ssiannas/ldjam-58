@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b43320a0f28a94297b621ccf297f91, type: 3}
   m_Name: SpawnRate1
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.SpawnRateUpgrade
-  upgradeName: SpawnRate1
+  upgradeUpgradeName: 
   upgradeDescription: Souls appear more often
   flavorText: "Going at it like rabbits. Only, you know\u2026 spiritually"
   upgradeCost: 100
   upgradeTier: 1
   upgradeType: 1
-  spawnRateIncrease: 0.1
+  spawnRateIncrease: 0.5
   gameState: {fileID: 11400000, guid: 4b9d6de3c950bdd48b059dff7645f006, type: 2}

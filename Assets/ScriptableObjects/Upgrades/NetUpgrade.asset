@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b246e1d56a4c9193407e63cd02df03, type: 3}
   m_Name: NetUpgrade
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.WeaponUpgrade
-  upgradeName: Net
+  upgradeUpgradeName: 
   upgradeDescription: Collect more souls with a handy net
   flavorText: This works better on jellyfish...
-  upgradeCost: 10
+  upgradeCost: 37
   upgradeTier: 1
   upgradeType: 2
   weapon: {fileID: 11400000, guid: c36eb0ddd8e02604baf2bc1c3e7a4f86, type: 2}

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b43320a0f28a94297b621ccf297f91, type: 3}
   m_Name: SpawnRate2
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.SpawnRateUpgrade
-  upgradeName: SR2
+  upgradeUpgradeName: 
   upgradeDescription: Souls appear even more often
   flavorText: Now with 30% less waiting around awkwardl
-  upgradeCost: 500
+  upgradeCost: 2500
   upgradeTier: 2
   upgradeType: 1
-  spawnRateIncrease: 0.2
+  spawnRateIncrease: 0.75
   gameState: {fileID: 11400000, guid: 4b9d6de3c950bdd48b059dff7645f006, type: 2}

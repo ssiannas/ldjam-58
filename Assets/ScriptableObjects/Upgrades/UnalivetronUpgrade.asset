@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b246e1d56a4c9193407e63cd02df03, type: 3}
   m_Name: UnalivetronUpgrade
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.WeaponUpgrade
-  upgradeName: Unalivatron-9000
+  upgradeUpgradeName: 
   upgradeDescription: 'Collect continuously '
   flavorText: Boomstick sold seperatelly
-  upgradeCost: 12
+  upgradeCost: 20000
   upgradeTier: 2
   upgradeType: 2
   weapon: {fileID: 11400000, guid: 52bbc39ffbfc91342952aad5f1202866, type: 2}

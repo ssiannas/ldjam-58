@@ -19,7 +19,7 @@ namespace ldjam_58
          
          [Header("Reset Values")]
          [SerializeField] float defaultSpawnRate = 2.0f;
-         [SerializeField] uint defaultCurrentSouls = 1;
+         [SerializeField] uint defaultCurrentSouls = 75;
          [SerializeField] uint defaultCurrentSoulValue = 1;
 
          private void OnEnable()

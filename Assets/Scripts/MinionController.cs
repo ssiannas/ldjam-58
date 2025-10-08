@@ -6,8 +6,8 @@ namespace ldjam_58
 {
     public class MinionController : MonoBehaviour
     {
-        [SerializeField] private float reapPeriod = 2.0f;
-        [SerializeField] private float reapRadius = 1.0f;
+        [SerializeField] private float reapPeriod = 1.5f;
+        [SerializeField] private float reapRadius = 2.5f;
         [SerializeField] private GameManagerChannel _gameManagerChannel;
         
         private readonly Collider2D[] _soulsBuffer = new Collider2D[600];

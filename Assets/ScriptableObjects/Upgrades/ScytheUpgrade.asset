@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b246e1d56a4c9193407e63cd02df03, type: 3}
   m_Name: ScytheUpgrade
   m_EditorClassIdentifier: Assembly-CSharp::ldjam_58.WeaponUpgrade
-  upgradeName: Scythe
+  upgradeUpgradeName: 
   upgradeDescription: Collect souls from a huge area!
   flavorText: Now you look like a real pro!
-  upgradeCost: 12
+  upgradeCost: 400000
   upgradeTier: 3
   upgradeType: 2
   weapon: {fileID: 11400000, guid: 6f8988b36eb8dc543a8e12275395ef0c, type: 2}
